@@ -26,7 +26,7 @@ public protocol NRefreshProtocol {
     /// 作用的view
     var view: UIView { get }
     
-    /// 阀值 当offset到这个值时释放可以刷新
+    /// 阀值 当offset到这个值时释放可以刷新 headerView height
     var thresholdValue: CGFloat { set get }
     
     /// 动画view 与 base view 布局的间隔
@@ -60,6 +60,12 @@ public protocol NRefreshProtocol {
     mutating func refresh(view: NRefreshView, progressDidChange progress: CGFloat)
 }
 
+extension NRefreshProtocol {
+    var thresholdValue: CGFloat {
+        return 60
+    }
+}
+
 /// 系统触感反馈器
 fileprivate class NNestImpactor {
     
@@ -90,4 +96,9 @@ extension NNestImpactorProtocol {
     func impact() -> Void {
         NNestImpactor.impact()
     }
+}
+
+
+extension UIScrollView {
+    
 }

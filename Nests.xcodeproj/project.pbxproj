@@ -12,6 +12,7 @@
 		E75D1DC226AF1D7819921627 /* Pods_NestsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D205F2042400BD6700C784 /* Pods_NestsDemo.framework */; };
 		EC55C677219E93AC00168282 /* NModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC55C676219E93AC00168282 /* NModel.swift */; };
 		EC55C67B219E993A00168282 /* NCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC55C67A219E993A00168282 /* NCacheManager.swift */; };
+		EC73B54221AE714100A2F47B /* UIViewFrameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */; };
 		ECB1789221ABC41D006CBDB6 /* UIScorllViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1789121ABC41D006CBDB6 /* UIScorllViewExtention.swift */; };
 		ECB1789421ABC45F006CBDB6 /* NNest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1789321ABC45F006CBDB6 /* NNest.swift */; };
 		ECB1789621ABC4D2006CBDB6 /* NRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1789521ABC4D2006CBDB6 /* NRefreshView.swift */; };
@@ -58,6 +59,7 @@
 		D8D205F2042400BD6700C784 /* Pods_NestsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NestsDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC55C676219E93AC00168282 /* NModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NModel.swift; sourceTree = "<group>"; };
 		EC55C67A219E993A00168282 /* NCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCacheManager.swift; sourceTree = "<group>"; };
+		EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewFrameExtension.swift; sourceTree = "<group>"; };
 		ECB1789121ABC41D006CBDB6 /* UIScorllViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScorllViewExtention.swift; sourceTree = "<group>"; };
 		ECB1789321ABC45F006CBDB6 /* NNest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNest.swift; sourceTree = "<group>"; };
 		ECB1789521ABC4D2006CBDB6 /* NRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRefreshView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				ECB1789021ABC3F7006CBDB6 /* UIScrollView+refresh */,
+				EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC73B54221AE714100A2F47B /* UIViewFrameExtension.swift in Sources */,
 				ECB1789A21ABF261006CBDB6 /* NRefreshProtocol.swift in Sources */,
 				EC55C67B219E993A00168282 /* NCacheManager.swift in Sources */,
 				ECB1789821ABC915006CBDB6 /* NRfreshViewAnimator.swift in Sources */,
