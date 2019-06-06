@@ -10,19 +10,16 @@ import Foundation
 
 /// 默认 animator
 open class NRefreshViewAnimator: NRefreshProtocol {
-    public init() {
-        view = UIView()
-        insets = UIEdgeInsets.zero
-        state = .normal
-    }
     
-    public var view: UIView
+    public init() {}
+    
+    public var view: UIView = UIView()
     
     public var thresholdValue: CGFloat = 60.0
     
-    public var insets: UIEdgeInsets
+    public var insets: UIEdgeInsets = .zero
     
-    public var state: NRefreshState
+    public var state: NRefreshState = .pullToRefresh
     
     public func animationBegin(refreshView: NRefreshView) {
         

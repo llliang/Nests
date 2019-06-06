@@ -9,7 +9,7 @@
 import Foundation
 
 public struct NNest<Base> {
-    let base: Base
+    public let base: Base
     init(_ base: Base) {
         self.base = base
     }

@@ -1,4 +1,5 @@
 
+platform :ios, '10.0'
 
 target 'Nests' do
     use_frameworks!
@@ -14,10 +15,11 @@ target 'NestsDemo' do
     
     pod 'Alamofire'
     pod 'RealmSwift'
+    pod 'lottie-ios'
     
 end
 
-#platform :ios, '10.0'
+
 
 #target 'JUtilsDemo' do
  #   use_frameworks!

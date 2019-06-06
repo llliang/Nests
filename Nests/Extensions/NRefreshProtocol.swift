@@ -15,10 +15,14 @@ import Foundation
 /// - releaseToRefresh: 已达到刷新条件 释放即可刷新
 /// - refreshing: 刷新中
 public enum NRefreshState {
-    case normal
     case pullToRefresh
     case releaseToRefresh
     case refreshing
+    case noMoreData
+}
+
+public extension NRefreshProtocol where Self: UIView {
+    var view: UIView { return self }
 }
 
 public protocol NRefreshProtocol {
@@ -50,7 +54,7 @@ public protocol NRefreshProtocol {
     /// - Parameters:
     ///   - view: 作用的view
     ///   - stateDidChanged: 当前状态，NRefreshState
-    mutating func refresh(view: NRefreshView, stateDidChanged: NRefreshState)
+    mutating func refresh(view: NRefreshView, stateDidChanged state: NRefreshState)
     
     /// refresh view 到达刷新的阀值前的进度
     ///
@@ -89,16 +93,11 @@ fileprivate class NNestImpactor {
     }
 }
 
-protocol NNestImpactorProtocol {
+public protocol NNestImpactorProtocol {
 }
 
 extension NNestImpactorProtocol {
-    func impact() -> Void {
+    public func impact() -> Void {
         NNestImpactor.impact()
     }
-}
-
-
-extension UIScrollView {
-    
 }
