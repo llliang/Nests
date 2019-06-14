@@ -52,12 +52,18 @@ open class NModel<ModelEntity: NEntityCodable>: NModelHttpable {
 
     open var method: NHttpManager.NHttpMethod = .GET
     
-    open var appendParamaters = Dictionary<String, Any>()
+    open var additionalParamaters = Dictionary<String, Any>() {
+        didSet {
+            self.paramaters = self.additionalParamaters.merging(paramaters, uniquingKeysWith: { (_, new) -> Any in
+                return new;
+            })
+        }
+    }
 
     public required init(url: String, paramaters: Dictionary<String, Any> = Dictionary<String, Any>()) {
         self.url = url
         
-        self.paramaters = paramaters.merging(self.appendParamaters, uniquingKeysWith: { (_, new) -> Any in
+        self.paramaters = paramaters.merging(self.additionalParamaters, uniquingKeysWith: { (_, new) -> Any in
             return new
         })
     }
