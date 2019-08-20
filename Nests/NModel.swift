@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 /// Http 请求
 public protocol NModelHttpable {
@@ -37,13 +36,23 @@ public protocol NModelHttpable {
 /// 缓存
 public protocol NModelCache {
     
-    associatedtype Entity
+    associatedtype ModelEntity
     var cacheTime: TimeInterval { get }
-    func cache()
-    func loadCache() -> Entity?
+    var cacheKey: String? { get }
+    func loadCache() -> ModelEntity
 }
 
-open class NModel<ModelEntity: NEntityCodable>: NModelHttpable {
+open class NModel<ModelEntity: NEntityCodable>: NModelHttpable, NModelCache {
+ 
+    public var cacheKey: String?
+    
+    public var cacheTime: TimeInterval = 0
+    
+    public func loadCache() -> ModelEntity? {
+        return nil
+    }
+    
+    
     public var task: URLSessionTask?
     
     open var url: String = ""
@@ -71,8 +80,15 @@ open class NModel<ModelEntity: NEntityCodable>: NModelHttpable {
     open func loadData(start: () -> (), finished: @escaping (ModelEntity?) -> (), failure: @escaping (Error) -> ()) {
         task = NHttpManager.requestAsynchronous(url: url, method: method, parameters: paramaters) { (result) in
             if result.isSuccess {
+                
                 let entity = try! ModelEntity.toEntity(data: result.value as Any)
                 finished(entity)
+                
+                guard let cacheKey = self.cacheKey else {
+                    return
+                }
+                
+                NCacheManager.instance.setCache(cache: entity, forKey: cacheKey, expireInterval: self.cacheTime)
             } else {
                 failure(result.error!)
             }

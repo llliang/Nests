@@ -1,12 +1,11 @@
 
-platform :ios, '10.0'
+platform :ios, '9.0'
 
 target 'Nests' do
     use_frameworks!
 
     pod 'Alamofire'
-    pod 'RealmSwift'
-
+    pod 'SQLite.swift'
 end
 
 
@@ -14,7 +13,6 @@ target 'NestsDemo' do
     use_frameworks!
     
     pod 'Alamofire'
-    pod 'RealmSwift'
     pod 'lottie-ios'
     
 end

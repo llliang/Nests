@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		007DC73CFED0753D9451AE57 /* Pods_Nests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B148B33EDB4BBCF633FD4F9 /* Pods_Nests.framework */; };
 		6C7FCE67AF447A8B6331B898 /* Pods_Nests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF3D530219D947100ECCA2C /* Pods_Nests.framework */; };
+		DC1539592303E5A900E0007C /* NCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1539582303E5A900E0007C /* NCacheManager.swift */; };
 		E75D1DC226AF1D7819921627 /* Pods_NestsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D205F2042400BD6700C784 /* Pods_NestsDemo.framework */; };
 		EC26340621BA6C90007FB120 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = EC2633FF21BA6C90007FB120 /* loading.json */; };
 		EC26340721BA6C90007FB120 /* img_1.png in Resources */ = {isa = PBXBuildFile; fileRef = EC26340121BA6C90007FB120 /* img_1.png */; };
@@ -17,7 +18,6 @@
 		EC26340A21BA6C90007FB120 /* img_3.png in Resources */ = {isa = PBXBuildFile; fileRef = EC26340421BA6C90007FB120 /* img_3.png */; };
 		EC26340B21BA6C90007FB120 /* img_4.png in Resources */ = {isa = PBXBuildFile; fileRef = EC26340521BA6C90007FB120 /* img_4.png */; };
 		EC55C677219E93AC00168282 /* NModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC55C676219E93AC00168282 /* NModel.swift */; };
-		EC55C67B219E993A00168282 /* NDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC55C67A219E993A00168282 /* NDatabaseManager.swift */; };
 		EC71F77B21C397CF0088BFAF /* NEntityCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC71F77A21C397CF0088BFAF /* NEntityCodable.swift */; };
 		EC73B54221AE714100A2F47B /* UIViewFrameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */; };
 		EC97EFD221B68D9400159ADE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC97EFD121B68D9400159ADE /* BaseViewController.swift */; };
@@ -67,6 +67,7 @@
 		B6EEF665184EBB92040A6B44 /* Pods-Nests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nests/Pods-Nests.release.xcconfig"; sourceTree = "<group>"; };
 		BF66D75CBE7ACBBE746E89E3 /* Pods-NestsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NestsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-NestsDemo/Pods-NestsDemo.release.xcconfig"; sourceTree = "<group>"; };
 		D8D205F2042400BD6700C784 /* Pods_NestsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NestsDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC1539582303E5A900E0007C /* NCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCacheManager.swift; sourceTree = "<group>"; };
 		EC2633FF21BA6C90007FB120 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		EC26340121BA6C90007FB120 /* img_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_1.png; sourceTree = "<group>"; };
 		EC26340221BA6C90007FB120 /* img_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_0.png; sourceTree = "<group>"; };
@@ -74,7 +75,6 @@
 		EC26340421BA6C90007FB120 /* img_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_3.png; sourceTree = "<group>"; };
 		EC26340521BA6C90007FB120 /* img_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_4.png; sourceTree = "<group>"; };
 		EC55C676219E93AC00168282 /* NModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NModel.swift; sourceTree = "<group>"; };
-		EC55C67A219E993A00168282 /* NDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDatabaseManager.swift; sourceTree = "<group>"; };
 		EC71F77A21C397CF0088BFAF /* NEntityCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEntityCodable.swift; sourceTree = "<group>"; };
 		EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewFrameExtension.swift; sourceTree = "<group>"; };
 		EC97EFD121B68D9400159ADE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 		ECFEE8BE21953ADD00D8B346 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EC55C67A219E993A00168282 /* NDatabaseManager.swift */,
+				DC1539582303E5A900E0007C /* NCacheManager.swift */,
 				ECD5D792219A9D04006A5C47 /* NHttpManager.swift */,
 			);
 			name = Network;
@@ -446,9 +446,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC71F77B21C397CF0088BFAF /* NEntityCodable.swift in Sources */,
+				DC1539592303E5A900E0007C /* NCacheManager.swift in Sources */,
 				EC73B54221AE714100A2F47B /* UIViewFrameExtension.swift in Sources */,
 				ECB1789A21ABF261006CBDB6 /* NRefreshProtocol.swift in Sources */,
-				EC55C67B219E993A00168282 /* NDatabaseManager.swift in Sources */,
 				ECB1789821ABC915006CBDB6 /* NRfreshViewAnimator.swift in Sources */,
 				ECB1789221ABC41D006CBDB6 /* UIScorllViewExtention.swift in Sources */,
 				ECB1789421ABC45F006CBDB6 /* NNest.swift in Sources */,
