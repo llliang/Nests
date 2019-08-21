@@ -10,19 +10,10 @@ end
 
 
 target 'NestsDemo' do
-    use_frameworks!
-    
-    pod 'Alamofire'
-    pod 'lottie-ios'
-    
+   use_frameworks!
+
+   # pod 'Alamofire'
+   pod 'lottie-ios'
+
 end
 
-
-
-#target 'JUtilsDemo' do
- #   use_frameworks!
-    
-  #  pod 'Alamofire'
-   # pod 'SQLite.swift'
-    
-#end

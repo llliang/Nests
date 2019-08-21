@@ -8,7 +8,6 @@
 
 import UIKit
 import Nests
-import RealmSwift
 
 let url = "http://localhost:3000/mobile/test"
 
