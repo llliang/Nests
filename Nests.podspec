@@ -111,7 +111,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'Manager' do |manager|
     manager.source_files = 'Nests/Manager/*'
-    models.dependency 'Nests/Model'
+    manager.dependency 'Nests/Model'
   end
 
   spec.subspec 'Extensions' do |extensions|
