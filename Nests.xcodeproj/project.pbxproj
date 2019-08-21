@@ -176,9 +176,16 @@
 			isa = PBXGroup;
 			children = (
 				DCBEBA7E230D571600A119CE /* NCacheManager.swift */,
-				DCBEBA7F230D571600A119CE /* NHttpManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		DCBEBA82230D590000A119CE /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DCBEBA7F230D571600A119CE /* NHttpManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		ECB1788F21ABC3D0006CBDB6 /* Extensions */ = {
@@ -216,6 +223,7 @@
 				ECFEE8B721953A2E00D8B346 /* Info.plist */,
 				ECFEE8B621953A2E00D8B346 /* Nests.h */,
 				ECB1789321ABC45F006CBDB6 /* NNest.swift */,
+				DCBEBA82230D590000A119CE /* Manager */,
 				ECB1788F21ABC3D0006CBDB6 /* Extensions */,
 				DCBEBA6F230D56E100A119CE /* Model */,
 				DCBEBA7D230D571600A119CE /* Network */,
