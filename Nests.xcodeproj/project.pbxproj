@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CB1BC92FF5B5700BD29B5512 /* Pods_NestsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463C0EA89803490B0AF1DC93 /* Pods_NestsDemo.framework */; };
-		DC1539592303E5A900E0007C /* NCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1539582303E5A900E0007C /* NCacheManager.swift */; };
 		DCBEBA2C230D2FEC00A119CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA2B230D2FEC00A119CE /* AppDelegate.swift */; };
 		DCBEBA2E230D2FEC00A119CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA2D230D2FEC00A119CE /* ViewController.swift */; };
 		DCBEBA33230D2FED00A119CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCBEBA32230D2FED00A119CE /* Assets.xcassets */; };
@@ -21,16 +20,17 @@
 		DCBEBA4C230D30CC00A119CE /* img_2.png in Resources */ = {isa = PBXBuildFile; fileRef = DCBEBA43230D30CC00A119CE /* img_2.png */; };
 		DCBEBA4D230D30CC00A119CE /* img_3.png in Resources */ = {isa = PBXBuildFile; fileRef = DCBEBA44230D30CC00A119CE /* img_3.png */; };
 		DCBEBA4E230D30CC00A119CE /* img_4.png in Resources */ = {isa = PBXBuildFile; fileRef = DCBEBA45230D30CC00A119CE /* img_4.png */; };
-		EC55C677219E93AC00168282 /* NModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC55C676219E93AC00168282 /* NModel.swift */; };
-		EC71F77B21C397CF0088BFAF /* NEntityCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC71F77A21C397CF0088BFAF /* NEntityCodable.swift */; };
+		DCBEBA72230D56E100A119CE /* NModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA70230D56E100A119CE /* NModel.swift */; };
+		DCBEBA73230D56E100A119CE /* NEntityCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA71230D56E100A119CE /* NEntityCodable.swift */; };
+		DCBEBA79230D56EF00A119CE /* UIScorllViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA75230D56EF00A119CE /* UIScorllViewExtention.swift */; };
+		DCBEBA7A230D56EF00A119CE /* NRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA76230D56EF00A119CE /* NRefreshView.swift */; };
+		DCBEBA7B230D56EF00A119CE /* NRefreshProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA77230D56EF00A119CE /* NRefreshProtocol.swift */; };
+		DCBEBA7C230D56EF00A119CE /* NRfreshViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA78230D56EF00A119CE /* NRfreshViewAnimator.swift */; };
+		DCBEBA80230D571600A119CE /* NCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA7E230D571600A119CE /* NCacheManager.swift */; };
+		DCBEBA81230D571600A119CE /* NHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA7F230D571600A119CE /* NHttpManager.swift */; };
 		EC73B54221AE714100A2F47B /* UIViewFrameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */; };
 		EC7963B6813D7CAA8F2F0829 /* Pods_Nests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75960BB9241D99B33B2BD393 /* Pods_Nests.framework */; };
-		ECB1789221ABC41D006CBDB6 /* UIScorllViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1789121ABC41D006CBDB6 /* UIScorllViewExtention.swift */; };
 		ECB1789421ABC45F006CBDB6 /* NNest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1789321ABC45F006CBDB6 /* NNest.swift */; };
-		ECB1789621ABC4D2006CBDB6 /* NRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1789521ABC4D2006CBDB6 /* NRefreshView.swift */; };
-		ECB1789821ABC915006CBDB6 /* NRfreshViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1789721ABC915006CBDB6 /* NRfreshViewAnimator.swift */; };
-		ECB1789A21ABF261006CBDB6 /* NRefreshProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1789921ABF261006CBDB6 /* NRefreshProtocol.swift */; };
-		ECD5D793219A9D04006A5C47 /* NHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD5D792219A9D04006A5C47 /* NHttpManager.swift */; };
 		ECFEE8B821953A2E00D8B346 /* Nests.h in Headers */ = {isa = PBXBuildFile; fileRef = ECFEE8B621953A2E00D8B346 /* Nests.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -41,7 +41,6 @@
 		7620A5803C3C54F8C239A031 /* Pods-NestsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NestsDemo.release.xcconfig"; path = "Target Support Files/Pods-NestsDemo/Pods-NestsDemo.release.xcconfig"; sourceTree = "<group>"; };
 		AAFC694BBFB32BF8D40F424C /* Pods-Nests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nests.release.xcconfig"; path = "Target Support Files/Pods-Nests/Pods-Nests.release.xcconfig"; sourceTree = "<group>"; };
 		D59B95DEEE45207E9B1C04DF /* Pods-Nests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nests.debug.xcconfig"; path = "Target Support Files/Pods-Nests/Pods-Nests.debug.xcconfig"; sourceTree = "<group>"; };
-		DC1539582303E5A900E0007C /* NCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCacheManager.swift; sourceTree = "<group>"; };
 		DCBEBA29230D2FEC00A119CE /* NestsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NestsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCBEBA2B230D2FEC00A119CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCBEBA2D230D2FEC00A119CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,15 +58,16 @@
 		DCBEBA4F230D32B500A119CE /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCBEBA59230D341500A119CE /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCBEBA5B230D341900A119CE /* SQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC55C676219E93AC00168282 /* NModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NModel.swift; sourceTree = "<group>"; };
-		EC71F77A21C397CF0088BFAF /* NEntityCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEntityCodable.swift; sourceTree = "<group>"; };
+		DCBEBA70230D56E100A119CE /* NModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NModel.swift; sourceTree = "<group>"; };
+		DCBEBA71230D56E100A119CE /* NEntityCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NEntityCodable.swift; sourceTree = "<group>"; };
+		DCBEBA75230D56EF00A119CE /* UIScorllViewExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScorllViewExtention.swift; sourceTree = "<group>"; };
+		DCBEBA76230D56EF00A119CE /* NRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRefreshView.swift; sourceTree = "<group>"; };
+		DCBEBA77230D56EF00A119CE /* NRefreshProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRefreshProtocol.swift; sourceTree = "<group>"; };
+		DCBEBA78230D56EF00A119CE /* NRfreshViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRfreshViewAnimator.swift; sourceTree = "<group>"; };
+		DCBEBA7E230D571600A119CE /* NCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NCacheManager.swift; sourceTree = "<group>"; };
+		DCBEBA7F230D571600A119CE /* NHttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHttpManager.swift; sourceTree = "<group>"; };
 		EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewFrameExtension.swift; sourceTree = "<group>"; };
-		ECB1789121ABC41D006CBDB6 /* UIScorllViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScorllViewExtention.swift; sourceTree = "<group>"; };
 		ECB1789321ABC45F006CBDB6 /* NNest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNest.swift; sourceTree = "<group>"; };
-		ECB1789521ABC4D2006CBDB6 /* NRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRefreshView.swift; sourceTree = "<group>"; };
-		ECB1789721ABC915006CBDB6 /* NRfreshViewAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRfreshViewAnimator.swift; sourceTree = "<group>"; };
-		ECB1789921ABF261006CBDB6 /* NRefreshProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRefreshProtocol.swift; sourceTree = "<group>"; };
-		ECD5D792219A9D04006A5C47 /* NHttpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHttpManager.swift; sourceTree = "<group>"; };
 		ECFEE8B321953A2E00D8B346 /* Nests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECFEE8B621953A2E00D8B346 /* Nests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Nests.h; sourceTree = "<group>"; };
 		ECFEE8B721953A2E00D8B346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -152,33 +152,42 @@
 			path = images;
 			sourceTree = "<group>";
 		};
-		EC71F77921C3979F0088BFAF /* Model */ = {
+		DCBEBA6F230D56E100A119CE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EC55C676219E93AC00168282 /* NModel.swift */,
-				EC71F77A21C397CF0088BFAF /* NEntityCodable.swift */,
+				DCBEBA70230D56E100A119CE /* NModel.swift */,
+				DCBEBA71230D56E100A119CE /* NEntityCodable.swift */,
 			);
-			name = Model;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DCBEBA74230D56EF00A119CE /* UIScrollView+refresh */ = {
+			isa = PBXGroup;
+			children = (
+				DCBEBA75230D56EF00A119CE /* UIScorllViewExtention.swift */,
+				DCBEBA76230D56EF00A119CE /* NRefreshView.swift */,
+				DCBEBA77230D56EF00A119CE /* NRefreshProtocol.swift */,
+				DCBEBA78230D56EF00A119CE /* NRfreshViewAnimator.swift */,
+			);
+			path = "UIScrollView+refresh";
+			sourceTree = "<group>";
+		};
+		DCBEBA7D230D571600A119CE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DCBEBA7E230D571600A119CE /* NCacheManager.swift */,
+				DCBEBA7F230D571600A119CE /* NHttpManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		ECB1788F21ABC3D0006CBDB6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				ECB1789021ABC3F7006CBDB6 /* UIScrollView+refresh */,
+				DCBEBA74230D56EF00A119CE /* UIScrollView+refresh */,
 				EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		ECB1789021ABC3F7006CBDB6 /* UIScrollView+refresh */ = {
-			isa = PBXGroup;
-			children = (
-				ECB1789121ABC41D006CBDB6 /* UIScorllViewExtention.swift */,
-				ECB1789521ABC4D2006CBDB6 /* NRefreshView.swift */,
-				ECB1789721ABC915006CBDB6 /* NRfreshViewAnimator.swift */,
-				ECB1789921ABF261006CBDB6 /* NRefreshProtocol.swift */,
-			);
-			name = "UIScrollView+refresh";
 			sourceTree = "<group>";
 		};
 		ECFEE8A921953A2E00D8B346 = {
@@ -207,20 +216,11 @@
 				ECFEE8B721953A2E00D8B346 /* Info.plist */,
 				ECFEE8B621953A2E00D8B346 /* Nests.h */,
 				ECB1789321ABC45F006CBDB6 /* NNest.swift */,
-				EC71F77921C3979F0088BFAF /* Model */,
 				ECB1788F21ABC3D0006CBDB6 /* Extensions */,
-				ECFEE8BE21953ADD00D8B346 /* Network */,
+				DCBEBA6F230D56E100A119CE /* Model */,
+				DCBEBA7D230D571600A119CE /* Network */,
 			);
 			path = Nests;
-			sourceTree = "<group>";
-		};
-		ECFEE8BE21953ADD00D8B346 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				DC1539582303E5A900E0007C /* NCacheManager.swift */,
-				ECD5D792219A9D04006A5C47 /* NHttpManager.swift */,
-			);
-			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,16 +418,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC71F77B21C397CF0088BFAF /* NEntityCodable.swift in Sources */,
-				DC1539592303E5A900E0007C /* NCacheManager.swift in Sources */,
+				DCBEBA81230D571600A119CE /* NHttpManager.swift in Sources */,
+				DCBEBA80230D571600A119CE /* NCacheManager.swift in Sources */,
+				DCBEBA73230D56E100A119CE /* NEntityCodable.swift in Sources */,
+				DCBEBA79230D56EF00A119CE /* UIScorllViewExtention.swift in Sources */,
 				EC73B54221AE714100A2F47B /* UIViewFrameExtension.swift in Sources */,
-				ECB1789A21ABF261006CBDB6 /* NRefreshProtocol.swift in Sources */,
-				ECB1789821ABC915006CBDB6 /* NRfreshViewAnimator.swift in Sources */,
-				ECB1789221ABC41D006CBDB6 /* UIScorllViewExtention.swift in Sources */,
+				DCBEBA7C230D56EF00A119CE /* NRfreshViewAnimator.swift in Sources */,
+				DCBEBA7B230D56EF00A119CE /* NRefreshProtocol.swift in Sources */,
 				ECB1789421ABC45F006CBDB6 /* NNest.swift in Sources */,
-				EC55C677219E93AC00168282 /* NModel.swift in Sources */,
-				ECB1789621ABC4D2006CBDB6 /* NRefreshView.swift in Sources */,
-				ECD5D793219A9D04006A5C47 /* NHttpManager.swift in Sources */,
+				DCBEBA7A230D56EF00A119CE /* NRefreshView.swift in Sources */,
+				DCBEBA72230D56E100A119CE /* NModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
