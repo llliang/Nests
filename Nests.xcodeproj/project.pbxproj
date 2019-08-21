@@ -175,7 +175,7 @@
 		DCBEBA7D230D571600A119CE /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				DCBEBA7E230D571600A119CE /* NCacheManager.swift */,
+				DCBEBA7F230D571600A119CE /* NHttpManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -183,7 +183,7 @@
 		DCBEBA82230D590000A119CE /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				DCBEBA7F230D571600A119CE /* NHttpManager.swift */,
+				DCBEBA7E230D571600A119CE /* NCacheManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
