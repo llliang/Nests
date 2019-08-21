@@ -97,20 +97,21 @@ Pod::Spec.new do |spec|
 
   # spec.public_header_files = "Classes/**/*.h"
 
+  spec.subspec 'Network' do |network|
+    network.source_files = 'Nests/Network/*'
+    network.dependency 'Alamofire'
+    network.dependency 'SQLite.swift'
+  end
+
   spec.subspec 'Model' do |models|
-    models.source_files = 'Nests/Models'
+    models.source_files = 'Nests/Model/*'
     models.dependency 'Nests/Network'
   end
 
   spec.subspec 'Extensions' do |extensions|
-    extensions.source_files = 'Nests/Extensions'
+    extensions.source_files = 'Nests/Extensions/*'
   end
 
-  spec.subspec 'Network' do |network|
-    network.source_files = 'Nests/Network'
-    network.dependency 'Alamofire'
-    network.dependency 'SQLite.swift'
-  end
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
