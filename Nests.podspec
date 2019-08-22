@@ -92,7 +92,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-	spec.source_files  = "Nests/*.{h,swift}"
+	spec.source_files  = "Nests/*"
   # spec.source_files  = "Classes", "Classes/**/*.{h,m}"
   # spec.exclude_files = "Classes/Exclude"
 
@@ -114,7 +114,7 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'Extensions' do |extensions|
-    extensions.source_files = 'Nests/Extensions/*', 'Nests/Extensions/**/*'
+    extensions.source_files = 'Nests/Extensions/*'
     extensions.dependency 'Nests/Nest'
   end
 
@@ -139,7 +139,7 @@ Pod::Spec.new do |spec|
   #  the lib prefix of their name.
   #
 
-  spec.frameworks  = "Foundation" , "UIKit"
+  spec.frameworks  = "Foundation", "UIKit"
   # spec.frameworks = "SomeFramework", "AnotherFramework"
 
   # spec.library   = "iconv"
