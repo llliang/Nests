@@ -109,11 +109,6 @@ Pod::Spec.new do |spec|
     models.dependency 'Nests/Network'
   end
 
-  spec.subspec 'Manager' do |manager|
-    manager.source_files = 'Nests/Manager/*'
-    manager.dependency 'Nests/Model'
-  end
-
   spec.subspec 'Extensions' do |extensions|
     extensions.source_files = 'Nests/Extensions/*'
   end
