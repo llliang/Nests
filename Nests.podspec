@@ -81,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "http://git.corp.qlchat.com/qlchat-ios/Nests.git", :tag => "#{spec.version.to_s}" }
+  spec.source       = { :git => "http://git.corp.qlchat.com/qlchat-ios/Nests.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
