@@ -98,5 +98,9 @@ open class NModel<ModelEntity: NEntityCodable>: NModelHttpable, NModelCache {
     open func cancel() {
         task?.cancel()
     }
+    
+    func get() {
+        
+    }
 }
 
