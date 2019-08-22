@@ -98,6 +98,10 @@ Pod::Spec.new do |spec|
 
   # spec.public_header_files = "Classes/**/*.h"
 
+	spec.subspec 'Nest' do |nest|
+    nest.source_files = 'Nests/Nest/*'
+  end
+
   spec.subspec 'Network' do |network|
     network.source_files = 'Nests/Network/*'
     network.dependency 'Alamofire'
@@ -110,7 +114,8 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'Extensions' do |extensions|
-    extensions.source_files = 'Nests/Extensions/*'
+    extensions.source_files = 'Nests/Extensions/*', 'Nests/Extensions/**/*'
+    extensions.dependency 'Nests/Nest'
   end
 
 
