@@ -11,7 +11,10 @@ import SQLite
 
 open class NCacheManager: NSObject {
     
-    public static let instance = NCacheManager()
+    /// 数据库地址
+    static var dbPath: String?
+    
+    public static let manager = NCacheManager()
     
     private let key = Expression<String>("key")
     private let data = Expression<String>("data")
@@ -21,57 +24,72 @@ open class NCacheManager: NSObject {
         case pathError
     }
     
-    // 数据库path
-    private var dbPath: String?
+    /// 数据库对象
+    var db: Connection?
     
     override init() {
         super.init()
-        _ = try? db?.run(kvTable.create(ifNotExists: false, block: { (t) in
-            t.column(key, primaryKey: true)
-            t.column(data)
-            t.column(expire)
-        }))
+        
+        var dbPath = NCacheManager.dbPath
+        
+        if dbPath == nil {
+            let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+            
+            guard let docPath = documentPath else {
+                return
+            }
+            
+            dbPath = docPath + "/cache"
+        }
+        
+        let fileManager = FileManager.default
+        if !fileManager.fileExists(atPath: dbPath!) {
+            do {
+                try fileManager.createDirectory(atPath: dbPath!, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print("error = \(error.localizedDescription)")
+            }
+        }
+        
+        do {
+            try db = Connection(dbPath! + "/db.sqlite")
+        } catch let error {
+            print("error = \(error.localizedDescription)")
+        }
+        
+        do {
+            try db?.run(kvTable.create(ifNotExists: false, block: { (t) in
+                t.column(key, primaryKey: true)
+                t.column(data)
+                t.column(expire)
+            }))
+        } catch let error {
+            print("error = \(error.localizedDescription)")
+        }
         
         _ = try? db?.run(kvTable.filter(expire < Date()).delete())
     }
     
     public class func config(dbPath: String?) throws {
-        let instance = NCacheManager.instance
-        if dbPath == nil {
-            let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
-            guard let docPath = documentPath else {
-                throw NCacheDbError.pathError
-            }
-            instance.dbPath = docPath
-        } else {
-            instance.dbPath = dbPath
-        }
+        NCacheManager.dbPath = dbPath
     }
     
-    lazy var db: Connection? = {
-        let dbPath = self.dbPath!
-        let fileManager = FileManager.default
-        if !fileManager.fileExists(atPath: dbPath) {
-            try? fileManager.createDirectory(atPath: dbPath, withIntermediateDirectories: true, attributes: nil)
-        }
-        
-        return try? Connection(dbPath)
-    }()
-    
     // 键值对数据库
-    private var kvTable = Table("kvTable")
+    lazy var kvTable = Table("kvTable")
     
     @discardableResult
     public func setCache<Entity: NEntityCodable>(cache: Entity?, forKey: String, expireInterval: TimeInterval = 0) -> Bool {
+        
         guard let cache = cache else {
             return false
         }
+
         let d = cache.toJson()
         let string = String(data: d!, encoding: String.Encoding.utf8)
         do {
             // 默认不过期
             var expireDate = Date.distantFuture
-            
+
             // 若传入 expireInterval 大于0 则以传入时间为准
             if expireInterval > 0 {
                 expireDate = Date().addingTimeInterval(expireInterval)
@@ -79,7 +97,7 @@ open class NCacheManager: NSObject {
             try db?.run(kvTable.insert(or: .replace, key <- forKey, data <- string!, expire <- expireDate))
             return true
         } catch  {
-            print(error)
+            print(error.localizedDescription)
             return false
         }
     }
@@ -93,14 +111,28 @@ open class NCacheManager: NSObject {
         
         var results = Array<Row>()
         
-        for item in (try! db?.prepare(read))! {
-            results.append(item)
+        do {
+            if let items = try db?.prepare(read) {
+                for item in items {
+                    results.append(item)
+                }
+            }
+        } catch let error {
+            print("error = \(error.localizedDescription)")
         }
         
         let string: String? = results.first?[data]
         
         if (string != nil) {
-            return try? JSONDecoder().decode(Entity.self, from: (string?.data(using: String.Encoding.utf8))!)
+            guard let data = string?.data(using: String.Encoding.utf8) else {
+                return nil
+            }
+            
+            do {
+                return try JSONDecoder().decode(Entity.self, from: data)
+            } catch {
+                return nil
+            }
         }
         return nil
     }

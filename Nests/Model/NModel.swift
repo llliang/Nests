@@ -88,7 +88,7 @@ open class NModel<ModelEntity: NEntityCodable>: NModelHttpable, NModelCache {
                     return
                 }
                 
-                NCacheManager.instance.setCache(cache: entity, forKey: cacheKey, expireInterval: self.cacheTime)
+                NCacheManager.manager.setCache(cache: entity, forKey: cacheKey, expireInterval: self.cacheTime)
             } else {
                 failure(result.error!)
             }
@@ -97,10 +97,6 @@ open class NModel<ModelEntity: NEntityCodable>: NModelHttpable, NModelCache {
     
     open func cancel() {
         task?.cancel()
-    }
-    
-    func get() {
-        
     }
 }
 

@@ -39,6 +39,28 @@ extension NEntityCodable {
     }
 }
 
+extension NEntityCodable {
+    public func print() {
+        guard let data = self.toJson() else {
+            Swift.print("解析错误")
+            return
+        }
+        do {
+            let jsonObject = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
+            Swift.print(jsonObject)
+        } catch {
+            Swift.print("解析错误")
+        }
+    }
+}
+
+extension NEntityCodable {
+    func debug() {
+        let x = "xxxx"
+        Swift.print(x)
+    }
+}
+
 extension Array: NEntityCodable where Element: NEntityCodable {
     
 }
