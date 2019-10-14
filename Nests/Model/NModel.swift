@@ -12,6 +12,7 @@ import Foundation
 public protocol NModelHttpable {
     
     associatedtype ModelEntity
+    
     /// 请求url
     var url: String { set get }
     
@@ -35,8 +36,8 @@ public protocol NModelHttpable {
 
 /// 缓存
 public protocol NModelCache {
-    
     associatedtype ModelEntity
+    
     var cacheTime: TimeInterval { get }
     var cacheKey: String? { get }
     func loadCache() -> ModelEntity
