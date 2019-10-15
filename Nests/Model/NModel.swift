@@ -11,40 +11,38 @@ import Foundation
 /// Http 请求
 public protocol NModelHttpable {
     
-    associatedtype ModelEntity
+    associatedtype ModelEntity: NEntityCodable
     
     /// 请求url
     var url: String { set get }
     
-    var method: NHttpManager.NHttpMethod { set get }
+    var method: NHttpManager.NHttpMethod { get }
     
     /// 参数
-    var paramaters: Dictionary<String, Any> { set get }
-    
-    var task: URLSessionTask? { get }
+    var paramaters: Dictionary<String, Any> { get }
     
     /// 请求开始
     typealias Start = () -> ()
     
     /// 请求结束
-    typealias Success = (_ object: ModelEntity) -> ()
+    typealias Success = (_ object: ModelEntity?) -> ()
     
     typealias Failure = (_ failure: Error) -> ()
     
-    func loadData(start: Start, finished: @escaping Success, failure: @escaping Failure)
+    func loadData(start: Start, finished: @escaping Success, failure: @escaping Failure) -> URLSessionTask?
 }
 
 /// 缓存
 public protocol NModelCache {
-    associatedtype ModelEntity
+    associatedtype ModelEntity: NEntityCodable
     
     var cacheTime: TimeInterval { get }
     var cacheKey: String? { get }
-    func loadCache() -> ModelEntity
+    func loadCache() -> ModelEntity?
 }
 
 open class NModel<ModelEntity: NEntityCodable>: NModelHttpable, NModelCache {
- 
+    
     public var cacheKey: String?
     
     public var cacheTime: TimeInterval = 0
@@ -78,11 +76,11 @@ open class NModel<ModelEntity: NEntityCodable>: NModelHttpable, NModelCache {
         })
     }
     
-    open func loadData(start: () -> (), finished: @escaping (ModelEntity?) -> (), failure: @escaping (Error) -> ()) {
+    open func loadData(start: () -> (), finished: @escaping (ModelEntity?) -> (), failure: @escaping (Error) -> ()) -> URLSessionTask? {
         task = NHttpManager.requestAsynchronous(url: url, method: method, parameters: paramaters) { (result) in
             if result.isSuccess {
                 
-                let entity = try! ModelEntity.toEntity(data: result.value as Any)
+                let entity = try? ModelEntity.toEntity(data: result.value as Any)
                 finished(entity)
                 
                 guard let cacheKey = self.cacheKey else {
@@ -94,6 +92,7 @@ open class NModel<ModelEntity: NEntityCodable>: NModelHttpable, NModelCache {
                 failure(result.error!)
             }
         }
+        return task
     }
     
     open func cancel() {
