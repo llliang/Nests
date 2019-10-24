@@ -14,12 +14,12 @@ public enum NEntityError: Error {
 }
 
 public protocol NEntityCodable: Codable {
-    func toJson() -> Data?
+    func toJsonData() -> Data?
     static func toEntity(data: Any) throws -> Self?
 }
 
 extension NEntityCodable {
-    public func toJson() -> Data? {
+    public func toJsonData() -> Data? {
         let encode = JSONEncoder()
         return try? encode.encode(self)
     }
@@ -41,7 +41,7 @@ extension NEntityCodable {
 
 extension NEntityCodable {
     public func print() {
-        guard let data = self.toJson() else {
+        guard let data = self.toJsonData() else {
             Swift.print("解析错误")
             return
         }

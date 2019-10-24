@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CB1BC92FF5B5700BD29B5512 /* Pods_NestsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463C0EA89803490B0AF1DC93 /* Pods_NestsDemo.framework */; };
+		DC05020023602B52009E0208 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0501FF23602B52009E0208 /* UIColorExtension.swift */; };
 		DCBEBA2C230D2FEC00A119CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA2B230D2FEC00A119CE /* AppDelegate.swift */; };
 		DCBEBA2E230D2FEC00A119CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA2D230D2FEC00A119CE /* ViewController.swift */; };
 		DCBEBA33230D2FED00A119CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCBEBA32230D2FED00A119CE /* Assets.xcassets */; };
@@ -28,6 +29,8 @@
 		DCBEBA7C230D56EF00A119CE /* NRfreshViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA78230D56EF00A119CE /* NRfreshViewAnimator.swift */; };
 		DCBEBA80230D571600A119CE /* NCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA7E230D571600A119CE /* NCacheManager.swift */; };
 		DCBEBA81230D571600A119CE /* NHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA7F230D571600A119CE /* NHttpManager.swift */; };
+		DCF6D05D23602357000BE829 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF6D05C23602357000BE829 /* DictionaryExtension.swift */; };
+		DCFFA50023618124009706B9 /* NPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFFA4FF23618124009706B9 /* NPlayer.swift */; };
 		EC73B54221AE714100A2F47B /* UIViewFrameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */; };
 		EC7963B6813D7CAA8F2F0829 /* Pods_Nests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75960BB9241D99B33B2BD393 /* Pods_Nests.framework */; };
 		ECB1789421ABC45F006CBDB6 /* NNest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1789321ABC45F006CBDB6 /* NNest.swift */; };
@@ -41,6 +44,7 @@
 		7620A5803C3C54F8C239A031 /* Pods-NestsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NestsDemo.release.xcconfig"; path = "Target Support Files/Pods-NestsDemo/Pods-NestsDemo.release.xcconfig"; sourceTree = "<group>"; };
 		AAFC694BBFB32BF8D40F424C /* Pods-Nests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nests.release.xcconfig"; path = "Target Support Files/Pods-Nests/Pods-Nests.release.xcconfig"; sourceTree = "<group>"; };
 		D59B95DEEE45207E9B1C04DF /* Pods-Nests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nests.debug.xcconfig"; path = "Target Support Files/Pods-Nests/Pods-Nests.debug.xcconfig"; sourceTree = "<group>"; };
+		DC0501FF23602B52009E0208 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		DCBEBA29230D2FEC00A119CE /* NestsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NestsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCBEBA2B230D2FEC00A119CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCBEBA2D230D2FEC00A119CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 		DCBEBA78230D56EF00A119CE /* NRfreshViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRfreshViewAnimator.swift; sourceTree = "<group>"; };
 		DCBEBA7E230D571600A119CE /* NCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NCacheManager.swift; sourceTree = "<group>"; };
 		DCBEBA7F230D571600A119CE /* NHttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHttpManager.swift; sourceTree = "<group>"; };
+		DCF6D05C23602357000BE829 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		DCFFA4FF23618124009706B9 /* NPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NPlayer.swift; sourceTree = "<group>"; };
 		EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewFrameExtension.swift; sourceTree = "<group>"; };
 		ECB1789321ABC45F006CBDB6 /* NNest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNest.swift; sourceTree = "<group>"; };
 		ECFEE8B321953A2E00D8B346 /* Nests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +120,24 @@
 				7620A5803C3C54F8C239A031 /* Pods-NestsDemo.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DC0501FD23602B09009E0208 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				DCF6D05C23602357000BE829 /* DictionaryExtension.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		DC0501FE23602B13009E0208 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				DCBEBA74230D56EF00A119CE /* UIScrollView+refresh */,
+				EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */,
+				DC0501FF23602B52009E0208 /* UIColorExtension.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		DCBEBA2A230D2FEC00A119CE /* NestsDemo */ = {
@@ -189,11 +213,19 @@
 			path = Nest;
 			sourceTree = "<group>";
 		};
+		DCFFA4FE23618124009706B9 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				DCFFA4FF23618124009706B9 /* NPlayer.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		ECB1788F21ABC3D0006CBDB6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DCBEBA74230D56EF00A119CE /* UIScrollView+refresh */,
-				EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */,
+				DC0501FE23602B13009E0208 /* UIKit */,
+				DC0501FD23602B09009E0208 /* Foundation */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -223,6 +255,7 @@
 			children = (
 				ECFEE8B721953A2E00D8B346 /* Info.plist */,
 				ECFEE8B621953A2E00D8B346 /* Nests.h */,
+				DCFFA4FE23618124009706B9 /* Player */,
 				DCBEBA83230E966800A119CE /* Nest */,
 				ECB1788F21ABC3D0006CBDB6 /* Extensions */,
 				DCBEBA6F230D56E100A119CE /* Model */,
@@ -427,15 +460,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCBEBA81230D571600A119CE /* NHttpManager.swift in Sources */,
+				DCFFA50023618124009706B9 /* NPlayer.swift in Sources */,
 				DCBEBA80230D571600A119CE /* NCacheManager.swift in Sources */,
 				DCBEBA73230D56E100A119CE /* NEntityCodable.swift in Sources */,
 				DCBEBA79230D56EF00A119CE /* UIScorllViewExtention.swift in Sources */,
 				EC73B54221AE714100A2F47B /* UIViewFrameExtension.swift in Sources */,
+				DCF6D05D23602357000BE829 /* DictionaryExtension.swift in Sources */,
 				DCBEBA7C230D56EF00A119CE /* NRfreshViewAnimator.swift in Sources */,
 				DCBEBA7B230D56EF00A119CE /* NRefreshProtocol.swift in Sources */,
 				ECB1789421ABC45F006CBDB6 /* NNest.swift in Sources */,
 				DCBEBA7A230D56EF00A119CE /* NRefreshView.swift in Sources */,
 				DCBEBA72230D56E100A119CE /* NModel.swift in Sources */,
+				DC05020023602B52009E0208 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -84,7 +84,7 @@ open class NCacheManager: NSObject {
             return false
         }
 
-        let d = cache.toJson()
+        let d = cache.toJsonData()
         let string = String(data: d!, encoding: String.Encoding.utf8)
         do {
             // 默认不过期
