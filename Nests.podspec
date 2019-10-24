@@ -110,7 +110,6 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'Player' do |player|
 	player.source_files = 'Nests/Player/*'
-    player.dependency 'AVFoundation'
   end
 
   spec.subspec 'Model' do |models|
@@ -144,7 +143,7 @@ Pod::Spec.new do |spec|
   #  the lib prefix of their name.
   #
 
-  spec.frameworks  = "Foundation" , "UIKit"
+  spec.frameworks  = "Foundation" , "UIKit", "AVFoundation"
   # spec.frameworks = "SomeFramework", "AnotherFramework"
 
   # spec.library   = "iconv"
