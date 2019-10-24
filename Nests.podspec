@@ -109,8 +109,8 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'Player' do |player|
-	network.source_files = 'Nests/Player/*'
-    network.dependency 'AVFoundation'
+	player.source_files = 'Nests/Player/*'
+    player.dependency 'AVFoundation'
   end
 
   spec.subspec 'Model' do |models|
