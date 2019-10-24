@@ -102,13 +102,13 @@ Pod::Spec.new do |spec|
     nest.source_files = 'Nests/Nest/*'
   end
 
-  spec.subspec 'Player' do |network|
+  spec.subspec 'Network' do |network|
     network.source_files = 'Nests/Network/*'
     network.dependency 'Alamofire'
     network.dependency 'SQLite.swift'
   end
 
-  spec.subspec 'Network' do |player|
+  spec.subspec 'Player' do |player|
 	network.source_files = 'Nests/Player/*'
     network.dependency 'AVFoundation'
   end
