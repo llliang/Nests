@@ -94,21 +94,3 @@ extension UIView {
         self.layer.mask = shaper
     }
 }
-
-extension UIView {
-    public var safeAreaTop: CGFloat {
-        if #available(iOS 11.0, *) {
-            return self.safeAreaInsets.top
-        } else {
-            return 20.0
-        }
-    }
-    
-    public var safeAreaBottom: CGFloat {
-        if #available(iOS 11.0, *) {
-            return self.safeAreaInsets.bottom
-        } else {
-            return 0
-        }
-    }
-}
