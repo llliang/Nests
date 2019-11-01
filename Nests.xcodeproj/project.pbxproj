@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5DB524D236811C7008FB2C6 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB524C236811C7008FB2C6 /* UIImageExtension.swift */; };
 		CB1BC92FF5B5700BD29B5512 /* Pods_NestsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463C0EA89803490B0AF1DC93 /* Pods_NestsDemo.framework */; };
 		DC05020023602B52009E0208 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0501FF23602B52009E0208 /* UIColorExtension.swift */; };
 		DC94F1B82361B9A200AE5C5A /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC94F1B72361B9A200AE5C5A /* UIApplicationExtension.swift */; };
@@ -44,6 +45,7 @@
 		75960BB9241D99B33B2BD393 /* Pods_Nests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7620A5803C3C54F8C239A031 /* Pods-NestsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NestsDemo.release.xcconfig"; path = "Target Support Files/Pods-NestsDemo/Pods-NestsDemo.release.xcconfig"; sourceTree = "<group>"; };
 		AAFC694BBFB32BF8D40F424C /* Pods-Nests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nests.release.xcconfig"; path = "Target Support Files/Pods-Nests/Pods-Nests.release.xcconfig"; sourceTree = "<group>"; };
+		B5DB524C236811C7008FB2C6 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		D59B95DEEE45207E9B1C04DF /* Pods-Nests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nests.debug.xcconfig"; path = "Target Support Files/Pods-Nests/Pods-Nests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC0501FF23602B52009E0208 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		DC94F1B72361B9A200AE5C5A /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				DCBEBA74230D56EF00A119CE /* UIScrollView+refresh */,
 				EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */,
 				DC0501FF23602B52009E0208 /* UIColorExtension.swift */,
+				B5DB524C236811C7008FB2C6 /* UIImageExtension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				EC73B54221AE714100A2F47B /* UIViewFrameExtension.swift in Sources */,
 				DCF6D05D23602357000BE829 /* DictionaryExtension.swift in Sources */,
 				DCBEBA7C230D56EF00A119CE /* NRfreshViewAnimator.swift in Sources */,
+				B5DB524D236811C7008FB2C6 /* UIImageExtension.swift in Sources */,
 				DCBEBA7B230D56EF00A119CE /* NRefreshProtocol.swift in Sources */,
 				ECB1789421ABC45F006CBDB6 /* NNest.swift in Sources */,
 				DCBEBA7A230D56EF00A119CE /* NRefreshView.swift in Sources */,

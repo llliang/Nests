@@ -10,12 +10,12 @@ import Foundation
 
 /// refresh view state
 ///
-/// - normal: 普通状态
-/// - pullToRefresh: 下拉未达到刷新条件
+/// - dragToRefresh: 可下拉进行刷新
 /// - releaseToRefresh: 已达到刷新条件 释放即可刷新
 /// - refreshing: 刷新中
+/// - noMoreData: 没有数据
 public enum NRefreshState {
-    case pullToRefresh
+    case canDragRefresh
     case releaseToRefresh
     case refreshing
     case noMoreData

@@ -19,7 +19,7 @@ open class NRefreshViewAnimator: NRefreshProtocol {
     
     public var insets: UIEdgeInsets = .zero
     
-    public var state: NRefreshState = .pullToRefresh
+    public var state: NRefreshState = .canDragRefresh
     
     public func animationBegin(refreshView: NRefreshView) {
         

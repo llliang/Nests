@@ -210,7 +210,7 @@ open class NRefreshHeaderView: NRefreshView {
                 self.animator.refresh(view: self, stateDidChanged: .refreshing)
             }
         } else if offsetY < 0 {
-            self.animator.refresh(view: self, stateDidChanged: .pullToRefresh)
+            self.animator.refresh(view: self, stateDidChanged: .canDragRefresh)
         }
     }
     
@@ -323,7 +323,7 @@ open class NRefreshFooterView: NRefreshView {
         }
         
         if self.noMoreData == false {
-            self.animator.refresh(view: self, stateDidChanged: .pullToRefresh)
+            self.animator.refresh(view: self, stateDidChanged: .canDragRefresh)
         }
         super.stop()
     }

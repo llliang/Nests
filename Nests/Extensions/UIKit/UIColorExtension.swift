@@ -13,18 +13,12 @@ extension UIColor {
     
     /// 根据16进制返回颜色
     /// - Parameter hex: 传入的16进制  可以为 0xXXXXXX、#XXXXXX、 XXXXXX格式
-    public class func colorWith(hex:String) -> UIColor {
-        return processColorWith(hex: hex, alpha: 1)
-    }
-    
-    /// 根据16进制返回颜色
-    /// - Parameter hex: 传入的16进制  可以为 0xXXXXXX、#XXXXXX、 XXXXXX格式
     /// - Parameter alpha: 颜色的alpha值
-    public class func colorWith(hex:String, alpha:Float) -> UIColor {
+    public class func colorWith(hex: String, alpha: Float = 1) -> UIColor {
         return processColorWith(hex: hex, alpha: alpha)
     }
     
-    class private func processColorWith(hex:String, alpha:Float) -> UIColor {
+    class private func processColorWith(hex: String, alpha: Float) -> UIColor {
         if hex.isEmpty {
             return UIColor(white: 0, alpha: CGFloat(alpha))
         }
