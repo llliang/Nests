@@ -71,7 +71,7 @@ open class NHttpManager {
     ///   - parameters: 请求参数
     ///   - completion: 请求回调
     /// - Returns: DataRequest Type
-    @discardableResult open class func requestAsynchronous(url: URLConvertible, method: NHttpMethod, parameters: Dictionary<String, Any>?, httpHeaders: Dictionary<String, String>? = nil, completion: @escaping (_ data: NHttpResult<Any?>) -> ()) -> URLSessionTask? {
+    @discardableResult open class func requestAsynchronous(url: URLConvertible, method: NHttpMethod, parameters: Dictionary<String, Any?>?, httpHeaders: Dictionary<String, String>? = nil, completion: @escaping (_ data: NHttpResult<Any?>) -> ()) -> URLSessionTask? {
         var afMethod = HTTPMethod.get;
         
         switch method {
@@ -81,9 +81,6 @@ open class NHttpManager {
             afMethod = .get
         }
         
-        #if DEBUG
-            print("url = \(url) \n parameters = \(parameters?.description ?? "参数无法解析成json"))")
-        #endif
         return Alamofire.request(url, method: afMethod, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             var responseResult = NHttpResult.success(response.result.value)
         
