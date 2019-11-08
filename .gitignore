@@ -1,7 +1,0 @@
-*.xcworkspace
-Pods
-xcuserdata
-.DS_Store
-Podfile.lock
-NestsDemo
-.gitignore
