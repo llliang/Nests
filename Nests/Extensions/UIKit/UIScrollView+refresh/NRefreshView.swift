@@ -254,6 +254,11 @@ open class NRefreshFooterView: NRefreshView {
     open var noMoreData: Bool = false {
         didSet {
             self.animator.refresh(view: self, stateDidChanged: noMoreData ? .noMoreData : .releaseToRefresh)
+            if noMoreData {
+                self.scrollView?.contentInset.bottom = self.scrollViewContentInsents.bottom
+            } else {
+                self.scrollView?.contentInset.bottom = self.scrollViewContentInsents.bottom + self.height
+            }
         }
     }
     
@@ -263,6 +268,7 @@ open class NRefreshFooterView: NRefreshView {
             self.scrollView?.contentInset.bottom = self.scrollViewContentInsents.bottom + self.height
             self.frame = CGRect(x: 0, y: self.scrollView!.contentSize.height + self.scrollViewContentInsents.bottom, width: self.width, height: self.height)
         }
+        
         super.didMoveToSuperview()
     }
     

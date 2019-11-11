@@ -138,7 +138,7 @@ class Base: NEntityCodable {
 
 struct BaseEntity<Entity: NEntityCodable>: NEntityCodable {
   
-    
+
     var code: Int = 0
     var message: String = ""
     var data: Entity?

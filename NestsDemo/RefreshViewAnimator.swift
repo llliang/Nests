@@ -32,7 +32,7 @@ class RefreshViewAnimator: UIView, NRefreshProtocol, NNestImpactorProtocol {
     
     var insets: UIEdgeInsets = .zero
     
-    var state: NRefreshState = .pullToRefresh
+    var state: NRefreshState = .canDragRefresh
     
     func animationBegin(refreshView: NRefreshView) {
         animatorView.play()
@@ -48,7 +48,7 @@ class RefreshViewAnimator: UIView, NRefreshProtocol, NNestImpactorProtocol {
         }
         self.state = state
         switch state {
-        case .pullToRefresh:
+        case .canDragRefresh:
             animatorView.stop()
             break
         case .refreshing:
