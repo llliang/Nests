@@ -34,10 +34,16 @@ public protocol NModelHttpable {
 
 /// 缓存
 public protocol NModelCache {
+    
     associatedtype ModelEntity: NEntityCodable
     
+    /// 缓存有效期 秒为单位，为0则一直有效
     var cacheTime: TimeInterval { get }
+    
+    /// 缓存的key 为空则不缓存
     var cacheKey: String? { get }
+    
+    /// 加载本地缓存，key为 cacheKey
     func loadCache() -> ModelEntity?
 }
 

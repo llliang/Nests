@@ -130,8 +130,8 @@ extension NRefreshView {
     /// - Parameter toView: scroll view
     func addObserver(_ toView: UIView?) {
         if let scrollView = toView as? UIScrollView,false == isObserving {
-            scrollView.addObserver(self, forKeyPath: NRefreshView.contentOffset, options: [.initial, .new, .old], context: &NRefreshView.refreshContext)
-            scrollView.addObserver(self, forKeyPath: NRefreshView.contentSize, options: [.initial, .new, .old], context: &NRefreshView.refreshContext)
+            scrollView.addObserver(self, forKeyPath: NRefreshView.contentOffset, options: [ .new, .old], context: &NRefreshView.refreshContext)
+            scrollView.addObserver(self, forKeyPath: NRefreshView.contentSize, options: [ .new, .old], context: &NRefreshView.refreshContext)
             
             isObserving = true
         }
@@ -301,7 +301,7 @@ open class NRefreshFooterView: NRefreshView {
         let offsetY = scrollView.contentOffset.y
 
         // 1/2 thresholdValue 开始触发
-        if offsetY >= scrollView.contentSize.height + scrollViewContentInsents.top + scrollViewContentInsents.bottom + self.animator.thresholdValue/2 - scrollView.height {
+        if scrollView.contentSize.height >= scrollView.height, offsetY >= scrollView.contentSize.height + scrollViewContentInsents.top + scrollViewContentInsents.bottom + self.animator.thresholdValue/2 - scrollView.height {
             self.startRefreshing()
             self.animator.refresh(view: self, stateDidChanged: .refreshing)
         }

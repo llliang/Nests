@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5A04469237A586100649E0B /* Nests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFEE8B321953A2E00D8B346 /* Nests.framework */; };
 		B5DB524D236811C7008FB2C6 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB524C236811C7008FB2C6 /* UIImageExtension.swift */; };
 		CB1BC92FF5B5700BD29B5512 /* Pods_NestsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463C0EA89803490B0AF1DC93 /* Pods_NestsDemo.framework */; };
 		DC05020023602B52009E0208 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0501FF23602B52009E0208 /* UIColorExtension.swift */; };
@@ -38,6 +39,16 @@
 		ECB1789421ABC45F006CBDB6 /* NNest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1789321ABC45F006CBDB6 /* NNest.swift */; };
 		ECFEE8B821953A2E00D8B346 /* Nests.h in Headers */ = {isa = PBXBuildFile; fileRef = ECFEE8B621953A2E00D8B346 /* Nests.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B5A0446B237A586100649E0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECFEE8AA21953A2E00D8B346 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ECFEE8B221953A2E00D8B346;
+			remoteInfo = Nests;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1171CBF17794F92825DEB0AC /* Pods-NestsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NestsDemo.debug.xcconfig"; path = "Target Support Files/Pods-NestsDemo/Pods-NestsDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A04469237A586100649E0B /* Nests.framework in Frameworks */,
 				CB1BC92FF5B5700BD29B5512 /* Pods_NestsDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +309,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B5A0446C237A586100649E0B /* PBXTargetDependency */,
 			);
 			name = NestsDemo;
 			productName = NestsDemo;
@@ -484,6 +497,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B5A0446C237A586100649E0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ECFEE8B221953A2E00D8B346 /* Nests */;
+			targetProxy = B5A0446B237A586100649E0B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DCBEBA38230D2FED00A119CE /* Debug */ = {

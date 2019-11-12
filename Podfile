@@ -12,7 +12,7 @@ end
 target 'NestsDemo' do
    use_frameworks!
 
-   # pod 'Alamofire'
+    pod 'Alamofire'
    pod 'lottie-ios'
 
 end
