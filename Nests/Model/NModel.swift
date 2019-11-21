@@ -11,7 +11,7 @@ import Foundation
 /// Http 请求
 public protocol NModelHttpable {
     
-    associatedtype ModelEntity: NEntityCodable
+    associatedtype ModelEntity: Codable
     
     /// 请求url
     var url: String { set get }
@@ -19,7 +19,7 @@ public protocol NModelHttpable {
     var method: NHttpManager.NHttpMethod { get }
     
     /// 参数
-    var paramaters: Dictionary<String, Any> { get }
+    var paramaters: Dictionary<String, Any?> { get }
     
     /// 请求开始
     typealias Start = () -> ()
@@ -35,7 +35,7 @@ public protocol NModelHttpable {
 /// 缓存
 public protocol NModelCache {
     
-    associatedtype ModelEntity: NEntityCodable
+    associatedtype ModelEntity: Codable
     
     /// 缓存有效期 秒为单位，为0则一直有效
     var cacheTime: TimeInterval { get }
@@ -47,7 +47,7 @@ public protocol NModelCache {
     func loadCache() -> ModelEntity?
 }
 
-open class NModel<ModelEntity: NEntityCodable>: NModelHttpable, NModelCache {
+open class NModel<ModelEntity: Codable>: NModelHttpable, NModelCache {
     
     public var cacheKey: String?
     
@@ -62,7 +62,7 @@ open class NModel<ModelEntity: NEntityCodable>: NModelHttpable, NModelCache {
     
     open var url: String = ""
 
-    public var paramaters = Dictionary<String, Any>()
+    public var paramaters = Dictionary<String, Any?>()
 
     open var method: NHttpManager.NHttpMethod = .GET
     
@@ -86,7 +86,7 @@ open class NModel<ModelEntity: NEntityCodable>: NModelHttpable, NModelCache {
         task = NHttpManager.requestAsynchronous(url: url, method: method, parameters: paramaters) { (result) in
             if result.isSuccess {
                 
-                let entity = try? ModelEntity.toEntity(data: result.value as Any)
+                let entity = ModelEntity.toEntity(data: result.value as Any)
                 finished(entity)
                 
                 guard let cacheKey = self.cacheKey else {

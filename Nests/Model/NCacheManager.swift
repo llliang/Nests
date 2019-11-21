@@ -21,7 +21,7 @@ open class NCacheManager: NSObject {
     private let expire = Expression<Date>("expire")
     
     public enum NCacheDbError: Error {
-        case pathError
+        case patNError
     }
     
     /// 数据库对象
@@ -78,26 +78,33 @@ open class NCacheManager: NSObject {
     lazy var kvTable = Table("kvTable")
     
     @discardableResult
-    public func setCache<Entity: NEntityCodable>(cache: Entity?, forKey: String, expireInterval: TimeInterval = 0) -> Bool {
+    public func setCache<Entity: Codable>(cache: Entity?, forKey: String, expireInterval: TimeInterval = 0) -> Bool {
         
         guard let cache = cache else {
             return false
         }
 
-        let d = cache.toJsonData()
-        let string = String(data: d!, encoding: String.Encoding.utf8)
         do {
-            // 默认不过期
-            var expireDate = Date.distantFuture
+            let encode = JSONEncoder()
+            let d = try encode.encode(cache)
+            let string = String(data: d, encoding: String.Encoding.utf8)
+            
+            do {
+                // 默认不过期
+                var expireDate = Date.distantFuture
 
-            // 若传入 expireInterval 大于0 则以传入时间为准
-            if expireInterval > 0 {
-                expireDate = Date().addingTimeInterval(expireInterval)
+                // 若传入 expireInterval 大于0 则以传入时间为准
+                if expireInterval > 0 {
+                    expireDate = Date().addingTimeInterval(expireInterval)
+                }
+                try db?.run(kvTable.insert(or: .replace, key <- forKey, data <- string!, expire <- expireDate))
+                return true
+            } catch  {
+                print("写入数据库类型:\(Entity.self)出错，错误为:\(error.localizedDescription)")
+                return false
             }
-            try db?.run(kvTable.insert(or: .replace, key <- forKey, data <- string!, expire <- expireDate))
-            return true
-        } catch  {
-            print(error.localizedDescription)
+        } catch {
+            print("encode类型:\(Entity.self)出错，错误为:\(error.localizedDescription)---iOS13以下版本基础数据类型JSONEncoder有bug无法encode decode 建议基础数据类型不要用这个存")
             return false
         }
     }
@@ -106,7 +113,7 @@ open class NCacheManager: NSObject {
         try db?.run(kvTable.filter(key == forKey).delete())
     }
     
-    public func cache<Entity: NEntityCodable>(forKey: String) -> Entity? {
+    public func cache<Entity: Codable>(forKey: String) -> Entity? {
         let read = kvTable.filter(key == forKey)
         
         var results = Array<Row>()

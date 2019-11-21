@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50A1650237CF6D7001DC908 /* NError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A164F237CF6D7001DC908 /* NError.swift */; };
 		B5A04469237A586100649E0B /* Nests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFEE8B321953A2E00D8B346 /* Nests.framework */; };
 		B5DB524D236811C7008FB2C6 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB524C236811C7008FB2C6 /* UIImageExtension.swift */; };
 		CB1BC92FF5B5700BD29B5512 /* Pods_NestsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463C0EA89803490B0AF1DC93 /* Pods_NestsDemo.framework */; };
@@ -56,6 +57,7 @@
 		75960BB9241D99B33B2BD393 /* Pods_Nests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7620A5803C3C54F8C239A031 /* Pods-NestsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NestsDemo.release.xcconfig"; path = "Target Support Files/Pods-NestsDemo/Pods-NestsDemo.release.xcconfig"; sourceTree = "<group>"; };
 		AAFC694BBFB32BF8D40F424C /* Pods-Nests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nests.release.xcconfig"; path = "Target Support Files/Pods-Nests/Pods-Nests.release.xcconfig"; sourceTree = "<group>"; };
+		B50A164F237CF6D7001DC908 /* NError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NError.swift; sourceTree = "<group>"; };
 		B5DB524C236811C7008FB2C6 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		D59B95DEEE45207E9B1C04DF /* Pods-Nests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nests.debug.xcconfig"; path = "Target Support Files/Pods-Nests/Pods-Nests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC0501FF23602B52009E0208 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				DCBEBA70230D56E100A119CE /* NModel.swift */,
 				DCBEBA71230D56E100A119CE /* NEntityCodable.swift */,
 				DCBEBA7E230D571600A119CE /* NCacheManager.swift */,
+				B50A164F237CF6D7001DC908 /* NError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				DCBEBA72230D56E100A119CE /* NModel.swift in Sources */,
 				DC94F1B82361B9A200AE5C5A /* UIApplicationExtension.swift in Sources */,
 				DC05020023602B52009E0208 /* UIColorExtension.swift in Sources */,
+				B50A1650237CF6D7001DC908 /* NError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

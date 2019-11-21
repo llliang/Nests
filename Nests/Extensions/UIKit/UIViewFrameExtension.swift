@@ -84,10 +84,10 @@ extension UIView {
     /// - Parameter corners: 需要添加的圆角位置
     /// - Parameter cornerRadii: 圆角的大小 宽/高 不能大于view的宽高
     public func add(corners: UIRectCorner, cornerRadii: CGSize) {
-        if self.height/2 < cornerRadii.height || self.width/2 < cornerRadii.width {
-            return
-        }
-        
+//        if self.height/2 < cornerRadii.height || self.width/2 < cornerRadii.width {
+//            return
+//        }
+//
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: cornerRadii)
         let shaper = CAShapeLayer()
         shaper.path = path.cgPath

@@ -8,22 +8,7 @@
 
 import Foundation
 
-
-public enum NEntityError: Error {
-    case jsonError
-}
-
-public protocol NEntityCodable: Codable {
-    func toJsonData() -> Data?
-    static func toEntity(data: Any) throws -> Self?
-}
-
-extension NEntityCodable {
-    public func toJsonData() -> Data? {
-        let encode = JSONEncoder()
-        return try? encode.encode(self)
-    }
-    
+extension Decodable {
     public static func toEntity(data: Any) -> Self? {
         let decoder = JSONDecoder()
         if !JSONSerialization.isValidJSONObject(data) {
@@ -37,30 +22,4 @@ extension NEntityCodable {
             return nil
         }
     }
-}
-
-extension NEntityCodable {
-    public func print() {
-        guard let data = self.toJsonData() else {
-            Swift.print("解析错误")
-            return
-        }
-        do {
-            let jsonObject = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-            Swift.print(jsonObject)
-        } catch {
-            Swift.print("解析错误")
-        }
-    }
-}
-
-extension NEntityCodable {
-    func debug() {
-        let x = "xxxx"
-        Swift.print(x)
-    }
-}
-
-extension Array: NEntityCodable where Element: NEntityCodable {
-    
 }

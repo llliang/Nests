@@ -40,47 +40,70 @@ public protocol NPlayerDelegate: NSObjectProtocol {
     ///
     /// - Parameter player: 当前播放器
     func playerLayerCanDisplay(player: NPlayer)
+    
+    /// 监听进度的时间间隔
+    func playerPeriodicTimescale() -> CMTime
+    
+}
+
+extension NPlayerDelegate {
+    public func playerPeriodicTimescale() -> CMTime {
+        return CMTime(value: 1, timescale: 1)
+    }
 }
 
 // MARK: - base
 public class NPlayer: NSObject {
     
+    public enum PlayState {
+        case unknow
+        case playing
+        case pause
+        case stop
+        case failure
+    }
+    
     /// 单例
     public static let shared = NPlayer()
-    
-    public var delegates = [NPlayerDelegate]()
+        
+    public weak var delegate: NPlayerDelegate?
     
     public var player: AVPlayer?
     
+    public var state = PlayState.unknow
+    
     /// 内容为视频时的画面显示容器
-    public var playerView: QLPlayerView?
+    public var playerView: NPlayerView?
     
     private var progressObserver: Any?
     
-    override init() {
+    public override init() {
         super.init()
         self.addPlayerNotifications()
     }
     
-    func add(delegate: NPlayerDelegate) {
-        weak var weakDelegate = delegate
-        guard let d = weakDelegate else { return }
-        delegates.append(d)
-    }
-    
     private var currentItem: AVPlayerItem?
     
+    deinit {
+        self.destroy()
+    }
+    
+    func destroy() {
+        self.removeObserverStatus(fromPlayerItem: currentItem)
+        self.removeObserverLoadedTimeRanges(fromPlayerItem: currentItem)
+        self.removeObserverPlayerLayerDisplay(forPlayerLayer: playerView?.playerLayer)
+
+        playerView = nil
+        currentItem = nil
+        
+        self.removeProgressObserver()
+    }
+    
     /// 设置播放器资源
-    var asset: AVAsset? {
+    public var asset: AVAsset? {
         
         willSet {
-            self.removeObserverStatus(fromPlayerItem: currentItem)
-            self.removeObserverLoadedTimeRanges(fromPlayerItem: currentItem)
-            
-            playerView = nil
-            currentItem = nil
-            
-            self.removeProgressObserver()
+            self.destroy()
         }
         
         didSet {
@@ -96,9 +119,10 @@ public class NPlayer: NSObject {
             // 重设currentItem
             player = AVPlayer(playerItem: currentItem)
             player?.replaceCurrentItem(with: currentItem)
-            
+
             // 监听播放进度
-            progressObserver = player?.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: DispatchQueue.main, using: { [weak self] (time) in
+            let scale = delegate?.playerPeriodicTimescale() ?? CMTime(value: 1, timescale: 1)
+            progressObserver = player?.addPeriodicTimeObserver(forInterval: scale , queue: DispatchQueue.main, using: { [weak self] (time) in
                 
                 let currentSeconds = CMTimeGetSeconds(time)
                 guard let duration = self?.currentItem?.duration else {
@@ -112,16 +136,14 @@ public class NPlayer: NSObject {
                    
                 }
 
-                self?.map(transform: { (delegate) in
-                    if let s = self {
-                        delegate.playerDidPlay(player: s, progress: progress)
-                    }
-                })
+                if let s = self {
+                    s.delegate?.playerDidPlay(player: s, progress: progress)
+                }
             })
             
-            playerView = QLPlayerView()
+            playerView = NPlayerView()
             playerView?.playerLayer.player = player
-            self.observerPlayerLayerDisplay(forPlayerLayer: playerView!.playerLayer)
+            self.observerPlayerLayerDisplay(forPlayerLayer: playerView?.playerLayer)
         }
     }
     
@@ -140,22 +162,26 @@ extension NPlayer {
     /// 播放
     public func play() {
         player?.play()
+        state = .playing
     }
     
     /// 暂停
     public func pause() {
         player?.pause()
+        state = .pause
     }
     
     /// 恢复播放
     public func resume() {
         player?.play()
+        state = .playing
     }
     
     /// 停止播放 位置定位到从头开始
     public func stop() {
         player?.pause()
         self.seek(to: 0, completionHander: nil)
+        state = .stop
     }
     
     /// 定位到当前多少秒
@@ -211,9 +237,7 @@ extension NPlayer {
     
     private func handlePlayer(status: AVPlayer.Status) {
         if status == .failed {
-            self.map { (delegate) in
-                delegate.playerDidPlay(player: self, failed: player?.error)
-            }
+            delegate?.playerDidPlay(player: self, failed: player?.error)
         }
     }
     
@@ -229,17 +253,13 @@ extension NPlayer {
         let itemDuration = CMTimeGetSeconds(currentItemDuration)
         if itemDuration != 0 {
             let progress = total/itemDuration
-            self.map {
-                $0.playerDidLoadTimeRange(player: self, progress: progress)
-            }
+            delegate?.playerDidLoadTimeRange(player: self, progress: progress)
         }
     }
     
     private func handlePlayer(readyForDisplay: Bool) {
         if readyForDisplay {
-            self.map {
-                $0.playerLayerCanDisplay(player: self)
-            }
+            delegate?.playerLayerCanDisplay(player: self)
         }
     }
     
@@ -259,6 +279,10 @@ extension NPlayer {
         forPlayerLayer?.addObserver(self, forKeyPath: observerKeyPathPlayerLayerReadyForDisplay, options: [.old, .new], context: nil)
     }
     
+    private func removeObserverPlayerLayerDisplay(forPlayerLayer: AVPlayerLayer?) {
+        forPlayerLayer?.removeObserver(self, forKeyPath: observerKeyPathPlayerLayerReadyForDisplay)
+    }
+    
     private func observerStatus(forPlayerItem: AVPlayerItem?) {
         forPlayerItem?.addObserver(self, forKeyPath: observerKeyPathStatus, options: [.old, .new], context: nil)
     }
@@ -276,14 +300,6 @@ extension NPlayer {
     }
 }
 
-extension NPlayer {
-    func map(transform: (NPlayerDelegate) -> Void) {
-        let _ = delegates.map({
-            transform($0)
-        })
-    }
-}
-
 // MARK: - notification
 private extension NPlayer {
     
@@ -298,20 +314,18 @@ private extension NPlayer {
     }
     
     @objc func playerDidPlayToEndTime() {
-        self.map {
-            $0.playerDidPlayEnd(player: self)
-        }
+        state = .stop
+        delegate?.playerDidPlayEnd(player: self)
     }
     
     @objc func playerFailedToPlayToEndTime(notification: Notification) {
+        state = .failure
         let reason = notification.userInfo?[AVPlayerItemFailedToPlayToEndTimeErrorKey]
-        self.map {
-            $0.playerDidPlay(player: self, failed:  reason as? Error ?? nil)
-        }
+        delegate?.playerDidPlay(player: self, failed:  reason as? Error ?? nil)
     }
 }
 
-public class QLPlayerView: UIView {
+public class NPlayerView: UIView {
     override public class var layerClass: AnyClass {
         get {
             return AVPlayerLayer.self
@@ -321,7 +335,7 @@ public class QLPlayerView: UIView {
     public var playerLayer: AVPlayerLayer {
         get {
             let avLayer = self.layer as! AVPlayerLayer
-            avLayer.videoGravity = .resizeAspect
+            avLayer.videoGravity = .resizeAspectFill
             return avLayer
         }
     }
