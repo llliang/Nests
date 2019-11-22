@@ -78,6 +78,28 @@ extension UIView {
     }
 }
 
+public struct NCornerRadii {
+    public var leftTop: CGFloat = 0
+    public var rightTop: CGFloat = 0
+    public var leftBottom: CGFloat = 0
+    public var rightBottom: CGFloat = 0
+    
+    
+    public init(radius: CGFloat) {
+        leftTop = radius
+        rightTop = radius
+        leftBottom = radius
+        rightBottom = radius
+    }
+    
+    public init(leftTop: CGFloat, rightTop: CGFloat, leftBottom: CGFloat, rightBottom: CGFloat) {
+        self.leftTop = leftTop
+        self.rightTop = rightTop
+        self.leftBottom = leftBottom
+        self.rightBottom = rightBottom
+    }
+}
+
 extension UIView {
     
     /// 在设置完frame后 给view添加圆角
@@ -92,5 +114,30 @@ extension UIView {
         let shaper = CAShapeLayer()
         shaper.path = path.cgPath
         self.layer.mask = shaper
+    }
+    
+    public func addCornerRadius(radii: NCornerRadii) {
+        let path = CGMutablePath()
+        
+        let pi = CGFloat.pi
+        
+        // leftTop
+        let leftTopCenter = CGPoint(x: radii.leftTop, y: radii.leftTop)
+        path.addArc(center: leftTopCenter, radius: radii.leftTop, startAngle: pi, endAngle: 1.5 * pi, clockwise: false)
+        
+        let rightTopCenter = CGPoint(x: self.width - radii.rightTop, y: radii.rightTop)
+        path.addArc(center: rightTopCenter, radius: radii.rightTop, startAngle: 1.5 * pi, endAngle: 0, clockwise: false)
+        
+        let rightBottomCenter = CGPoint(x: self.width - radii.rightBottom, y: self.height - radii.rightBottom)
+        path.addArc(center: rightBottomCenter, radius: radii.rightBottom, startAngle: 0, endAngle: 0.5 * pi, clockwise: false)
+        let leftBottomCenter = CGPoint(x: radii.leftBottom, y: self.height - radii.leftBottom)
+        path.addArc(center: leftBottomCenter, radius: radii.leftBottom, startAngle: 0.5 * pi, endAngle: pi, clockwise: false)
+        
+        
+        path.closeSubpath()
+        
+        let shadowLayer = CAShapeLayer()
+        shadowLayer.path = path
+        self.layer.mask = shadowLayer
     }
 }
