@@ -36,6 +36,12 @@ public protocol NPlayerDelegate: NSObjectProtocol {
     ///   - progress: 当前缓冲进度
     func playerDidLoadTimeRange(player: NPlayer, progress: Double)
     
+    /// 播放器当前缓冲状态
+    /// - Parameters:
+    ///   - player: 当前播放器
+    ///   - status: 当前缓冲状态
+    func playerBuffer(player: NPlayer, status: NPlayer.BufferState)
+    
     /// 播放内容若为视频，则画面准备好的回调
     ///
     /// - Parameter player: 当前播放器
@@ -55,11 +61,17 @@ extension NPlayerDelegate {
 // MARK: - base
 public class NPlayer: NSObject {
     
-    public enum PlayState {
+    @objc public enum PlayState: Int {
         case unknow
         case playing
         case pause
         case stop
+        case failure
+    }
+    
+    @objc public enum BufferState: Int {
+        case loading
+        case likelyToKeepUp
         case failure
     }
     
@@ -91,6 +103,7 @@ public class NPlayer: NSObject {
     func destroy() {
         self.removeObserverStatus(fromPlayerItem: currentItem)
         self.removeObserverLoadedTimeRanges(fromPlayerItem: currentItem)
+        self.removeObserverTimeControlStatus(forPlayer: player)
         self.removeObserverPlayerLayerDisplay(forPlayerLayer: playerView?.playerLayer)
 
         playerView = nil
@@ -119,6 +132,8 @@ public class NPlayer: NSObject {
             // 重设currentItem
             player = AVPlayer(playerItem: currentItem)
             player?.replaceCurrentItem(with: currentItem)
+            
+            self.observerTimeControlStatus(forPlayer: player)
 
             // 监听播放进度
             let scale = delegate?.playerPeriodicTimescale() ?? CMTime(value: 1, timescale: 1)
@@ -208,12 +223,10 @@ extension NPlayer {
         DispatchQueue.main.async {
             switch keyPath {
             case self.observerKeyPathStatus:
-                
-                guard let status = change?[NSKeyValueChangeKey.newKey] as? AVPlayer.Status else {
-                    return
+             
+                if let current = self.currentItem {
+                    self.handlePlayer(status: current.status)
                 }
-                
-                self.handlePlayer(status: status)
                 
             case self.observerKeyPathLoadedTimeRanges:
                 guard let ranges = change?[NSKeyValueChangeKey.newKey] as? Array<NSValue> else {
@@ -225,6 +238,12 @@ extension NPlayer {
                 }
                 
                 self.handlePlayer(LoadedTimeRange: range)
+                
+            case self.observerKeyPathTimeControlStatus:
+                if let player = self.player {
+                    self.handlePlayerBuffer(status: player.timeControlStatus)
+                }
+                
             case self.observerKeyPathPlayerLayerReadyForDisplay:
                 if let isReadyForDisplay = self.playerView?.playerLayer.isReadyForDisplay {
                    self.handlePlayer(readyForDisplay: isReadyForDisplay)
@@ -235,9 +254,12 @@ extension NPlayer {
         }
     }
     
-    private func handlePlayer(status: AVPlayer.Status) {
+    private func handlePlayer(status: AVPlayerItem.Status) {
         if status == .failed {
+            delegate?.playerBuffer(player: self, status: .failure)
             delegate?.playerDidPlay(player: self, failed: player?.error)
+        } else if status == .readyToPlay {
+            delegate?.playerBuffer(player: self, status: .likelyToKeepUp)
         }
     }
     
@@ -257,6 +279,14 @@ extension NPlayer {
         }
     }
     
+    private func handlePlayerBuffer(status: AVPlayer.TimeControlStatus) {
+        if status == .waitingToPlayAtSpecifiedRate {
+            delegate?.playerBuffer(player: self, status: .loading)
+        } else {
+            delegate?.playerBuffer(player: self, status: .likelyToKeepUp)
+        }
+    }
+    
     private func handlePlayer(readyForDisplay: Bool) {
         if readyForDisplay {
             delegate?.playerLayerCanDisplay(player: self)
@@ -271,18 +301,15 @@ extension NPlayer {
         return "loadedTimeRanges"
     }
     
+    private var observerKeyPathTimeControlStatus: String {
+        return "timeControlStatus"
+    }
+    
     private var observerKeyPathPlayerLayerReadyForDisplay: String {
         return "readyForDisplay"
     }
     
-    private func observerPlayerLayerDisplay(forPlayerLayer: AVPlayerLayer?) {
-        forPlayerLayer?.addObserver(self, forKeyPath: observerKeyPathPlayerLayerReadyForDisplay, options: [.old, .new], context: nil)
-    }
-    
-    private func removeObserverPlayerLayerDisplay(forPlayerLayer: AVPlayerLayer?) {
-        forPlayerLayer?.removeObserver(self, forKeyPath: observerKeyPathPlayerLayerReadyForDisplay)
-    }
-    
+    // status
     private func observerStatus(forPlayerItem: AVPlayerItem?) {
         forPlayerItem?.addObserver(self, forKeyPath: observerKeyPathStatus, options: [.old, .new], context: nil)
     }
@@ -291,6 +318,7 @@ extension NPlayer {
         fromPlayerItem?.removeObserver(self, forKeyPath: observerKeyPathStatus)
     }
     
+    // time ranges
     private func observerLoadedTimeRanges(forPlayerItem: AVPlayerItem?) {
         forPlayerItem?.addObserver(self, forKeyPath: observerKeyPathLoadedTimeRanges, options: [.old, .new], context: nil)
     }
@@ -298,6 +326,25 @@ extension NPlayer {
     private func removeObserverLoadedTimeRanges(fromPlayerItem: AVPlayerItem?) {
         fromPlayerItem?.removeObserver(self, forKeyPath: observerKeyPathLoadedTimeRanges)
     }
+    
+    // timeControlStatus
+    private func observerTimeControlStatus(forPlayer: AVPlayer?) {
+        forPlayer?.addObserver(self, forKeyPath: observerKeyPathTimeControlStatus, options: [.old, .new], context: nil)
+    }
+    
+    private func removeObserverTimeControlStatus(forPlayer: AVPlayer?) {
+        forPlayer?.removeObserver(self, forKeyPath: observerKeyPathTimeControlStatus)
+    }
+    
+    // player layer display
+    private func observerPlayerLayerDisplay(forPlayerLayer: AVPlayerLayer?) {
+        forPlayerLayer?.addObserver(self, forKeyPath: observerKeyPathPlayerLayerReadyForDisplay, options: [.old, .new], context: nil)
+    }
+    
+    private func removeObserverPlayerLayerDisplay(forPlayerLayer: AVPlayerLayer?) {
+        forPlayerLayer?.removeObserver(self, forKeyPath: observerKeyPathPlayerLayerReadyForDisplay)
+    }
+    
 }
 
 // MARK: - notification
@@ -319,6 +366,9 @@ private extension NPlayer {
     }
     
     @objc func playerFailedToPlayToEndTime(notification: Notification) {
+        
+        delegate?.playerBuffer(player: self, status: .failure)
+        
         state = .failure
         let reason = notification.userInfo?[AVPlayerItemFailedToPlayToEndTimeErrorKey]
         delegate?.playerDidPlay(player: self, failed:  reason as? Error ?? nil)
