@@ -9,6 +9,7 @@
 import Foundation
 
 extension Decodable {
+    
     public static func toEntity(data: Any) -> Self? {
         let decoder = JSONDecoder()
         if !JSONSerialization.isValidJSONObject(data) {
@@ -22,4 +23,18 @@ extension Decodable {
             return nil
         }
     }
+    
+}
+
+extension Encodable {
+    
+    public func toObject() -> Any? {
+        let encode = JSONEncoder()
+        
+        if let jsonData = try? JSONEncoder().encode(self) {
+            return try? JSONSerialization.jsonObject(with: jsonData, options: .fragmentsAllowed)
+        }
+        return nil
+    }
+    
 }

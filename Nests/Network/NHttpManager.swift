@@ -94,3 +94,14 @@ open class NHttpManager {
     }
     
 }
+
+public extension NHttpManager {
+    static func monitoring(stateChange: @escaping ((NetworkReachabilityManager.NetworkReachabilityStatus) -> Void)) {
+        let manager = NetworkReachabilityManager(host: "www.baidu.com")
+        manager?.listener = { (state) in
+            stateChange(state)
+        }
+        
+        manager?.startListening()
+    }
+}
