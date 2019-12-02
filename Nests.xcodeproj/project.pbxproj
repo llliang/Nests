@@ -12,7 +12,7 @@
 		B5DB524D236811C7008FB2C6 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB524C236811C7008FB2C6 /* UIImageExtension.swift */; };
 		CB1BC92FF5B5700BD29B5512 /* Pods_NestsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463C0EA89803490B0AF1DC93 /* Pods_NestsDemo.framework */; };
 		DC05020023602B52009E0208 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0501FF23602B52009E0208 /* UIColorExtension.swift */; };
-		DC8B81EE23928E5A0012177F /* NNetworkAuthorizationMonitoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B81ED23928E5A0012177F /* NNetworkAuthorizationMonitoring.swift */; };
+		DC8B81EE23928E5A0012177F /* NNetworkMonitoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B81ED23928E5A0012177F /* NNetworkMonitoring.swift */; };
 		DC94F1B82361B9A200AE5C5A /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC94F1B72361B9A200AE5C5A /* UIApplicationExtension.swift */; };
 		DCBEBA2C230D2FEC00A119CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA2B230D2FEC00A119CE /* AppDelegate.swift */; };
 		DCBEBA2E230D2FEC00A119CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA2D230D2FEC00A119CE /* ViewController.swift */; };
@@ -62,7 +62,7 @@
 		B5DB524C236811C7008FB2C6 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		D59B95DEEE45207E9B1C04DF /* Pods-Nests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nests.debug.xcconfig"; path = "Target Support Files/Pods-Nests/Pods-Nests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC0501FF23602B52009E0208 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		DC8B81ED23928E5A0012177F /* NNetworkAuthorizationMonitoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNetworkAuthorizationMonitoring.swift; sourceTree = "<group>"; };
+		DC8B81ED23928E5A0012177F /* NNetworkMonitoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNetworkMonitoring.swift; sourceTree = "<group>"; };
 		DC94F1B72361B9A200AE5C5A /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		DCBEBA29230D2FEC00A119CE /* NestsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NestsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCBEBA2B230D2FEC00A119CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				DCBEBA7F230D571600A119CE /* NHttpManager.swift */,
-				DC8B81ED23928E5A0012177F /* NNetworkAuthorizationMonitoring.swift */,
+				DC8B81ED23928E5A0012177F /* NNetworkMonitoring.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -492,7 +492,7 @@
 				EC73B54221AE714100A2F47B /* UIViewFrameExtension.swift in Sources */,
 				DCF6D05D23602357000BE829 /* DictionaryExtension.swift in Sources */,
 				DCBEBA7C230D56EF00A119CE /* NRfreshViewAnimator.swift in Sources */,
-				DC8B81EE23928E5A0012177F /* NNetworkAuthorizationMonitoring.swift in Sources */,
+				DC8B81EE23928E5A0012177F /* NNetworkMonitoring.swift in Sources */,
 				B5DB524D236811C7008FB2C6 /* UIImageExtension.swift in Sources */,
 				DCBEBA7B230D56EF00A119CE /* NRefreshProtocol.swift in Sources */,
 				ECB1789421ABC45F006CBDB6 /* NNest.swift in Sources */,
