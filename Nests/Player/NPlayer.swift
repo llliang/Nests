@@ -351,27 +351,30 @@ extension NPlayer {
 private extension NPlayer {
     
     func addPlayerNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(playerDidPlayToEndTime), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(playerDidPlayToEndTime(_:)), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: currentItem)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(playerFailedToPlayToEndTime(notification:)), name: Notification.Name.AVPlayerItemFailedToPlayToEndTime, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(playerFailedToPlayToEndTime(_:)), name: Notification.Name.AVPlayerItemFailedToPlayToEndTime, object: currentItem)
     }
     
     func removeNotifications() {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc func playerDidPlayToEndTime() {
-        state = .stop
-        delegate?.playerDidPlayEnd(player: self)
+    @objc func playerDidPlayToEndTime(_ notification: Notification) {        
+        if let item = notification.object as? AVPlayerItem, item == currentItem {
+            state = .stop
+            delegate?.playerDidPlayEnd(player: self)
+        }
     }
     
-    @objc func playerFailedToPlayToEndTime(notification: Notification) {
-        
-        delegate?.playerBuffer(player: self, status: .failure)
-        
-        state = .failure
-        let reason = notification.userInfo?[AVPlayerItemFailedToPlayToEndTimeErrorKey]
-        delegate?.playerDidPlay(player: self, failed:  reason as? Error ?? nil)
+    @objc func playerFailedToPlayToEndTime(_ notification: Notification) {
+        if let item = notification.object as? AVPlayerItem, item == currentItem {
+            delegate?.playerBuffer(player: self, status: .failure)
+            
+            state = .failure
+            let reason = notification.userInfo?[AVPlayerItemFailedToPlayToEndTimeErrorKey]
+            delegate?.playerDidPlay(player: self, failed:  reason as? Error ?? nil)
+        }
     }
 }
 

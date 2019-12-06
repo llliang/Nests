@@ -47,14 +47,14 @@ open class NCacheManager: NSObject {
             do {
                 try fileManager.createDirectory(atPath: dbPath!, withIntermediateDirectories: true, attributes: nil)
             } catch {
-                print("error = \(error.localizedDescription)")
+//                print("error = \(error.localizedDescription)")
             }
         }
         
         do {
             try db = Connection(dbPath! + "/db.sqlite")
         } catch let error {
-            print("error = \(error.localizedDescription)")
+//            print("error = \(error.localizedDescription)")
         }
         
         do {
@@ -64,7 +64,7 @@ open class NCacheManager: NSObject {
                 t.column(expire)
             }))
         } catch let error {
-            print("error = \(error.localizedDescription)")
+//            print("error = \(error.localizedDescription)")
         }
         
         _ = try? db?.run(kvTable.filter(expire < Date()).delete())
@@ -100,11 +100,11 @@ open class NCacheManager: NSObject {
                 try db?.run(kvTable.insert(or: .replace, key <- forKey, data <- string!, expire <- expireDate))
                 return true
             } catch  {
-                print("写入数据库类型:\(Entity.self)出错，错误为:\(error.localizedDescription)")
+//                print("写入数据库类型:\(Entity.self)出错，错误为:\(error.localizedDescription)")
                 return false
             }
         } catch {
-            print("encode类型:\(Entity.self)出错，错误为:\(error.localizedDescription)---iOS13以下版本基础数据类型JSONEncoder有bug无法encode decode 建议基础数据类型不要用这个存")
+//            print("encode类型:\(Entity.self)出错，错误为:\(error.localizedDescription)---iOS13以下版本基础数据类型JSONEncoder有bug无法encode decode 建议基础数据类型不要用这个存")
             return false
         }
     }
@@ -124,8 +124,8 @@ open class NCacheManager: NSObject {
                     results.append(item)
                 }
             }
-        } catch let error {
-            print("error = \(error.localizedDescription)")
+        } catch {
+
         }
         
         let string: String? = results.first?[data]
