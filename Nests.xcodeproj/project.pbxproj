@@ -34,7 +34,6 @@
 		DCBEBA80230D571600A119CE /* NCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA7E230D571600A119CE /* NCacheManager.swift */; };
 		DCBEBA81230D571600A119CE /* NHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA7F230D571600A119CE /* NHttpManager.swift */; };
 		DCF6D05D23602357000BE829 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF6D05C23602357000BE829 /* DictionaryExtension.swift */; };
-		DCFFA50023618124009706B9 /* NPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFFA4FF23618124009706B9 /* NPlayer.swift */; };
 		EC73B54221AE714100A2F47B /* UIViewFrameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */; };
 		EC7963B6813D7CAA8F2F0829 /* Pods_Nests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75960BB9241D99B33B2BD393 /* Pods_Nests.framework */; };
 		ECB1789421ABC45F006CBDB6 /* NNest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1789321ABC45F006CBDB6 /* NNest.swift */; };
@@ -88,7 +87,6 @@
 		DCBEBA7E230D571600A119CE /* NCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NCacheManager.swift; sourceTree = "<group>"; };
 		DCBEBA7F230D571600A119CE /* NHttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHttpManager.swift; sourceTree = "<group>"; };
 		DCF6D05C23602357000BE829 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
-		DCFFA4FF23618124009706B9 /* NPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NPlayer.swift; sourceTree = "<group>"; };
 		EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewFrameExtension.swift; sourceTree = "<group>"; };
 		ECB1789321ABC45F006CBDB6 /* NNest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNest.swift; sourceTree = "<group>"; };
 		ECFEE8B321953A2E00D8B346 /* Nests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,14 +232,6 @@
 			path = Nest;
 			sourceTree = "<group>";
 		};
-		DCFFA4FE23618124009706B9 /* Player */ = {
-			isa = PBXGroup;
-			children = (
-				DCFFA4FF23618124009706B9 /* NPlayer.swift */,
-			);
-			path = Player;
-			sourceTree = "<group>";
-		};
 		ECB1788F21ABC3D0006CBDB6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,7 +266,6 @@
 			children = (
 				ECFEE8B721953A2E00D8B346 /* Info.plist */,
 				ECFEE8B621953A2E00D8B346 /* Nests.h */,
-				DCFFA4FE23618124009706B9 /* Player */,
 				DCBEBA83230E966800A119CE /* Nest */,
 				ECB1788F21ABC3D0006CBDB6 /* Extensions */,
 				DCBEBA6F230D56E100A119CE /* Model */,
@@ -482,7 +471,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCBEBA81230D571600A119CE /* NHttpManager.swift in Sources */,
-				DCFFA50023618124009706B9 /* NPlayer.swift in Sources */,
 				DCBEBA80230D571600A119CE /* NCacheManager.swift in Sources */,
 				DCBEBA73230D56E100A119CE /* NEntityCodable.swift in Sources */,
 				DCBEBA79230D56EF00A119CE /* UIScorllViewExtention.swift in Sources */,
