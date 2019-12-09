@@ -2,7 +2,7 @@
 //  NPlayer.swift
 //  Nests
 //
-//  Created by qlchat on 2019/10/17.
+//  Created by Neo on 2019/10/17.
 //
 
 import Foundation

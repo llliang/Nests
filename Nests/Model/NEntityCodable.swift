@@ -2,7 +2,7 @@
 //  NEntityCodable.swift
 //  Nests
 //
-//  Created by liang on 2018/12/14.
+//  Created by Neo on 2018/12/14.
 //  Copyright © 2018 TaiHao. All rights reserved.
 //
 

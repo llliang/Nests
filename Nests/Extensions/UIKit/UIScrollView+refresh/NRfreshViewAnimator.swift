@@ -2,7 +2,7 @@
 //  NRfreshViewAnimator.swift
 //  Nests
 //
-//  Created by liang on 2018/11/26.
+//  Created by Neo on 2018/11/26.
 //  Copyright © 2018 TaiHao. All rights reserved.
 //
 
