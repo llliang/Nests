@@ -319,7 +319,6 @@ open class NRefreshFooterView: NRefreshView {
         }
         super.start()
         self.animator.animationBegin(refreshView: self)
-        
         self.refreshHandler?()
     }
     
