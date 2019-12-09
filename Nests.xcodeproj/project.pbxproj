@@ -138,6 +138,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B5CCE589239E2E47003548DE /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				B50A164F237CF6D7001DC908 /* NError.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
 		DC0501FD23602B09009E0208 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,7 +207,6 @@
 				DCBEBA70230D56E100A119CE /* NModel.swift */,
 				DCBEBA71230D56E100A119CE /* NEntityCodable.swift */,
 				DCBEBA7E230D571600A119CE /* NCacheManager.swift */,
-				B50A164F237CF6D7001DC908 /* NError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,6 +273,7 @@
 			children = (
 				ECFEE8B721953A2E00D8B346 /* Info.plist */,
 				ECFEE8B621953A2E00D8B346 /* Nests.h */,
+				B5CCE589239E2E47003548DE /* Foundation */,
 				DCBEBA83230E966800A119CE /* Nest */,
 				ECB1788F21ABC3D0006CBDB6 /* Extensions */,
 				DCBEBA6F230D56E100A119CE /* Model */,

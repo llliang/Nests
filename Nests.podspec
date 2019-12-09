@@ -102,6 +102,10 @@ Pod::Spec.new do |spec|
     nest.source_files = 'Nests/Nest/*'
   end
 
+  spec.subspec 'Foundation' do |foundation|
+    foundation.source_files = 'Nests/Foundation/*'
+  end
+
   spec.subspec 'Network' do |network|
     network.source_files = 'Nests/Network/*'
     network.dependency 'Alamofire'
