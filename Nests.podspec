@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "Nests"
   spec.version      = "0.0.1"
-  spec.summary      = "utils for qlchat"
+  spec.summary      = "utils for TaiHao"
   spec.swift_version = "5.0"
 
   # This description is used to generate tags and improve search results.
@@ -26,10 +26,10 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-  						jiang liang create for qlchat
+  						jiang liang create for TaiHao
                    DESC
 
-  spec.homepage     = "http://git.corp.qlchat.com/qlchat-ios/Nests.git"
+  spec.homepage     = "https://gitee.com/icicle/Nests.git"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -81,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "http://git.corp.qlchat.com/qlchat-ios/Nests.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://gitee.com/icicle/Nests.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -106,10 +106,6 @@ Pod::Spec.new do |spec|
     network.source_files = 'Nests/Network/*'
     network.dependency 'Alamofire'
     network.dependency 'SQLite.swift'
-  end
-
-  spec.subspec 'Player' do |player|
-	player.source_files = 'Nests/Player/*'
   end
 
   spec.subspec 'Model' do |models|
@@ -143,7 +139,7 @@ Pod::Spec.new do |spec|
   #  the lib prefix of their name.
   #
 
-  spec.frameworks  = "Foundation" , "UIKit", "AVFoundation"
+  spec.frameworks  = "Foundation" , "UIKit"
   # spec.frameworks = "SomeFramework", "AnotherFramework"
 
   # spec.library   = "iconv"
