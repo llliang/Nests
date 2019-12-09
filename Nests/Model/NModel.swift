@@ -19,7 +19,7 @@ public protocol NModelHttpable {
     var method: NHttpManager.NHttpMethod { get }
     
     /// 参数
-    var paramaters: Dictionary<String, Any?> { get }
+    var paramaters: Dictionary<String, Any> { get }
     
     /// 请求开始
     typealias Start = () -> ()
@@ -62,13 +62,13 @@ open class NModel<ModelEntity: Codable>: NModelHttpable, NModelCache {
     
     open var url: String = ""
 
-    public var paramaters = Dictionary<String, Any?>()
+    public var paramaters = Dictionary<String, Any>()
 
     open var method: NHttpManager.NHttpMethod = .GET
     
     open var additionalParamaters = Dictionary<String, Any>() {
         didSet {
-            self.paramaters = self.additionalParamaters.merging(paramaters, uniquingKeysWith: { (_, new) -> Any in
+            self.paramaters = self.additionalParamaters.merging(paramaters, uniquingKeysWith: { (_, new) -> Any? in
                 return new;
             })
         }

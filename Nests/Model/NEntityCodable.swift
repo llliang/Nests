@@ -28,9 +28,7 @@ extension Decodable {
 
 extension Encodable {
     
-    public func toObject() -> Any? {
-        let encode = JSONEncoder()
-        
+    public func toObject() -> Any? {        
         if let jsonData = try? JSONEncoder().encode(self) {
             return try? JSONSerialization.jsonObject(with: jsonData, options: .fragmentsAllowed)
         }

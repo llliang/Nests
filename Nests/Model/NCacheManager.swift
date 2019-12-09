@@ -53,7 +53,7 @@ open class NCacheManager: NSObject {
         
         do {
             try db = Connection(dbPath! + "/db.sqlite")
-        } catch let error {
+        } catch {
 //            print("error = \(error.localizedDescription)")
         }
         
@@ -63,7 +63,7 @@ open class NCacheManager: NSObject {
                 t.column(data)
                 t.column(expire)
             }))
-        } catch let error {
+        } catch {
 //            print("error = \(error.localizedDescription)")
         }
         
