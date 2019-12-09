@@ -89,11 +89,16 @@ open class NCacheManager {
     ///
     /// - Parameter ofType: 数据类型 Object 及其子类
     /// - Returns: ofType 对应的类型的数组
-    public class func readObjects<T>(ofType: T.Type) -> [T]?  where T: Object {
+    public class func readObjects<T>(ofType: T.Type, sort: SortType = .DESC) -> [T]?  where T: Object {
         let results = NCacheManager.manager.realm.objects(ofType)
+        if sort == .ASC {
+            return results.map { (element) -> T in
+                return element
+            }
+        }
         return results.map { (element) -> T in
             return element
-        }
+        }.reversed()
     }
     
     /// 根据一个类型的最新指定数量的数据
@@ -102,11 +107,30 @@ open class NCacheManager {
     ///   - ofType: 数据类型 Object 及其子类
     ///   - latestCount: 最新的数量
     /// - Returns: 对应的类型的数组
-    public class func readObjects<T>(ofType: T.Type, latestCount: UInt) -> [T]?  where T: Object {
-        let results = NCacheManager.manager.realm.objects(ofType).filter("limited = %ld", latestCount)
-        return results.map { (element) -> T in
-            return element
+    
+    public enum SortType {
+        case DESC
+        case ASC
+    }
+    
+    public class func readObjects<T>(ofType: T.Type, latestCount: UInt, sort: SortType = .DESC) -> [T]?  where T: Object {
+        let results = NCacheManager.manager.realm.objects(ofType)
+        
+        var count = Int(latestCount)
+        if count > results.count {
+            count = results.count
         }
+        
+        let subResults = results[(results.count - count)..<results.count]
+   
+        if sort == .ASC {
+            return subResults.map { (element) -> T in
+                return element
+            }
+        }
+        return subResults.map { (element) -> T in
+            return element
+            }.reversed()
     }
 }
 

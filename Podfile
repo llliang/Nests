@@ -5,6 +5,7 @@ target 'Nests' do
 
     pod 'Alamofire'
     pod 'RealmSwift'
+    pod 'SQLite.swift'
 
 end
 
@@ -14,6 +15,7 @@ target 'NestsDemo' do
     
     pod 'Alamofire'
     pod 'RealmSwift'
+    pod 'lottie-ios'
     
 end
 

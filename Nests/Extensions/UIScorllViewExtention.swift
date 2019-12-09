@@ -17,7 +17,7 @@ private var kRefreshFooterKey: Void?
 ///  header/footer
 extension UIScrollView {
     
-    public var headerView: NRefreshHeaderView? {
+    public var refreshHeader: NRefreshHeaderView? {
         set {
             objc_setAssociatedObject(self, &kRefreshHeaderKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
@@ -27,7 +27,7 @@ extension UIScrollView {
         }
     }
     
-    public var footerView: NRefreshFooterView? {
+    public var refreshFooter: NRefreshFooterView? {
         set {
             objc_setAssociatedObject(self, &kRefreshFooterKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
@@ -40,42 +40,45 @@ extension UIScrollView {
 
 extension NNest where Base: UIScrollView {
     
-    @discardableResult public func add(refreshHeaderAnimator animator: NRefreshProtocol = NRefreshViewAnimator(), refreshHeaderHandler handler: @escaping NRefreshHandler) -> NRefreshHeaderView {
-        let rect = CGRect(x: 0, y: 0, width: -animator.thresholdValue - self.base.contentInset.top, height: animator.thresholdValue)
+    public func add(refreshHeaderAnimator animator: NRefreshProtocol = NRefreshViewAnimator(), refreshHeaderHandler handler: @escaping NRefreshHandler) {
+        let rect = CGRect(x: 0, y: -animator.thresholdValue, width: self.base.width, height: animator.thresholdValue)
         let header = NRefreshHeaderView(frame: rect, refreshViewAnimator: animator, refreshHandler: handler)
         self.base.addSubview(header)
-
-        self.base.headerView = header
-        return header
+        self.base.refreshHeader = header
     }
     
-    @discardableResult public func add(refreshFooterAnimator animator: NRefreshProtocol = NRefreshViewAnimator(), refreshFooterHandler handler: @escaping NRefreshHandler) -> NRefreshFooterView {
-        let rect = CGRect(x: 0, y: self.base.contentSize.height + self.base.contentInset.bottom, width: -animator.thresholdValue, height: animator.thresholdValue)
+    public func add(refreshFooterAnimator animator: NRefreshProtocol = NRefreshViewAnimator(), refreshFooterHandler handler: @escaping NRefreshHandler) {
+        let rect = CGRect(x: 0, y: self.base.contentSize.height + self.base.contentInset.bottom, width: self.base.width, height: animator.thresholdValue)
         let footer = NRefreshFooterView(frame: rect, refreshViewAnimator: animator, refreshHandler: handler)
         self.base.addSubview(footer)
-        self.base.footerView = footer
-        return footer
+        self.base.refreshFooter = footer
     }
     
     public func startToRefresh() {
-        guard let headerView = self.base.headerView, !headerView.isRefreshing else {
+        guard let headerView = self.base.refreshHeader, !headerView.isRefreshing else {
             return
         }
-        self.base.headerView?.startRefreshing()
-        
-        
+        self.base.refreshHeader?.startRefreshing()
     }
     
-    public func stopToRefresh() {
-        
+    public func stopRefreshing() {
+        guard let headerView = self.base.refreshHeader, headerView.isRefreshing else {
+            return
+        }
+        self.base.refreshHeader?.stopRefreshing()
     }
     
     public func startToLoadMore() {
-        
+        guard let footerView = self.base.refreshFooter, !footerView.isRefreshing else {
+            return
+        }
+        self.base.refreshFooter?.startRefreshing()
     }
     
-    public func stopToLoadMore() {
-        
+    public func stopLoadingMore() {
+        guard let footerView = self.base.refreshFooter, footerView.isRefreshing else {
+            return
+        }
+        self.base.refreshFooter?.stopRefreshing()
     }
-    
 }

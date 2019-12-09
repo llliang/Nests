@@ -33,6 +33,7 @@ extension UIView {
         }
     }
     
+    /// origin.y + height
     public var bottom: CGFloat {
         set {
             self.frame = CGRect(x: self.frame.minX, y: newValue - self.frame.height, width: self.frame.width, height: self.frame.height)
@@ -43,6 +44,7 @@ extension UIView {
         }
     }
     
+    /// origin.x + width
     public var right: CGFloat {
         set {
             self.frame = CGRect(x: newValue - self.frame.width, y: self.frame.minY, width: self.frame.width, height: self.frame.height)
@@ -53,6 +55,7 @@ extension UIView {
         }
     }
     
+    /// width
     public var width: CGFloat {
         set {
             self.frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: newValue, height: self.frame.height)
@@ -63,6 +66,7 @@ extension UIView {
         }
     }
     
+    /// height
     public var height: CGFloat {
         set {
             self.frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: newValue)

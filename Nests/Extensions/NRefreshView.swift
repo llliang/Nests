@@ -36,7 +36,7 @@ open class NRefreshView: UIView {
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        self.autoresizingMask = [.flexibleLeftMargin, .flexibleWidth, .flexibleRightMargin]
+        self.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleWidth, .flexibleRightMargin]
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -130,8 +130,8 @@ extension NRefreshView {
     /// - Parameter toView: scroll view
     func addObserver(_ toView: UIView?) {
         if let scrollView = toView as? UIScrollView,false == isObserving {
-            scrollView.addObserver(self, forKeyPath: NRefreshView.contentOffset, options: [.initial, .new], context: &NRefreshView.refreshContext)
-            scrollView.addObserver(self, forKeyPath: NRefreshView.contentSize, options: [.initial, .new], context: &NRefreshView.refreshContext)
+            scrollView.addObserver(self, forKeyPath: NRefreshView.contentOffset, options: [.initial, .new, .old], context: &NRefreshView.refreshContext)
+            scrollView.addObserver(self, forKeyPath: NRefreshView.contentSize, options: [.initial, .new, .old], context: &NRefreshView.refreshContext)
             
             isObserving = true
         }
@@ -164,7 +164,17 @@ extension NRefreshView {
 }
 
 open class NRefreshHeaderView: NRefreshView {
-
+    /// record
+    fileprivate var bounces: Bool = false
+    
+    override open func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        DispatchQueue.main.async {
+            self.bounces = self.scrollView?.bounces ?? true
+            self.scrollViewContentInsents = self.scrollView?.contentInset ?? .zero
+        }
+    }
+    
     override open func didChangeContentOffset(object: Any?, change: [NSKeyValueChangeKey : Any]?) {
  
         guard let scrollView = scrollView else {
@@ -183,32 +193,92 @@ open class NRefreshHeaderView: NRefreshView {
             return
         }
         
-        self.animator.refresh(view: self, progressDidChange: 0)
-     
-        let offsetY = scrollView.contentOffset.y
-        print("offsetY = \(offsetY)")
+        let offsetY = scrollView.contentOffset.y + scrollViewContentInsents.top
         
+        defer {
+            if offsetY <= 0 {
+                let percent = (scrollView.contentOffset.y + scrollViewContentInsents.top) / self.animator.thresholdValue
+                self.animator.refresh(view: self, progressDidChange: min(abs(percent), 1))
+            }
+        }
+        
+        if offsetY <= -self.animator.thresholdValue {
+            if scrollView.isDragging {
+                self.animator.refresh(view: self, stateDidChanged: .releaseToRefresh)
+            } else {
+                self.startRefreshing()
+                self.animator.refresh(view: self, stateDidChanged: .refreshing)
+            }
+        } else if offsetY < 0 {
+            self.animator.refresh(view: self, stateDidChanged: .pullToRefresh)
+        }
     }
     
     open override func start() {
         guard let scrollView = scrollView else {
             return
         }
-        self.scrollViewContentInsents = scrollView.contentInset
+        super.start()
         
+        self.isIgnoreObserver = true
+        self.scrollView?.bounces = false
+        self.animator.animationBegin(refreshView: self)
+        
+        let offset = scrollViewContentInsents.top + self.animator.thresholdValue
+
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+            scrollView.contentInset.top = offset
+            scrollView.contentOffset.y = -offset
+
+        }) { (finished) in
+            self.scrollView?.bounces = self.bounces
+            self.refreshHandler?()
+        }
+    }
+    
+    open override func stop() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+            self.scrollView?.contentInset.top = self.scrollViewContentInsents.top
+        }) { (finished) in
+            self.animator.animationEnd(refreshView: self)
+
+            super.stop()
+            self.isIgnoreObserver = false
+        }
     }
 }
 
+// MARK : NRefreshFooterView
 open class NRefreshFooterView: NRefreshView {
     
+    open var noMoreData: Bool = false {
+        didSet {
+            self.animator.refresh(view: self, stateDidChanged: noMoreData ? .noMoreData : .releaseToRefresh)
+        }
+    }
+    
+    open override func didMoveToSuperview() {
+        DispatchQueue.main.async {
+            self.scrollViewContentInsents = self.scrollView?.contentInset ?? .zero
+            self.scrollView?.contentInset.bottom = self.scrollViewContentInsents.bottom + self.height
+            self.frame = CGRect(x: 0, y: self.scrollView!.contentSize.height + self.scrollViewContentInsents.bottom, width: self.width, height: self.height)
+        }
+        super.didMoveToSuperview()
+    }
+    
     override open func didChangeContentSize(object: Any?, change: [NSKeyValueChangeKey : Any]?) {
+        guard let scrollView = scrollView else {
+            return
+        }
         super.didChangeContentSize(object: object, change: change)
-        if let scrollView = scrollView {
-            self.isHidden = scrollView.contentSize.height < scrollView.height
+      
+        let targetY = scrollView.contentSize.height + scrollViewContentInsents.top + scrollViewContentInsents.bottom
+        
+        if self.top != targetY {
+            self.top = targetY
         }
-        if self.isRefreshing {
-            
-        }
+
+        self.isHidden = scrollView.contentSize.height < scrollView.height
     }
     
     override open func didChangeContentOffset(object: Any?, change: [NSKeyValueChangeKey : Any]?) {
@@ -218,9 +288,45 @@ open class NRefreshFooterView: NRefreshView {
         }
         super.didChangeContentOffset(object: object, change: change)
         
+        guard !_isRefreshing && !noMoreData && !isHidden else {
+            return
+        }
         
+        let offsetY = scrollView.contentOffset.y
+
+        // 1/2 thresholdValue 开始触发
+        if offsetY >= scrollView.contentSize.height + scrollViewContentInsents.top + scrollViewContentInsents.bottom + self.animator.thresholdValue/2 - scrollView.height {
+            self.startRefreshing()
+            self.animator.refresh(view: self, stateDidChanged: .refreshing)
+        }
+        let offset = scrollView.contentSize.height - (offsetY + scrollViewContentInsents.top + scrollViewContentInsents.bottom + scrollView.height)
+        
+        if offset <= 0 {
+            let progress = min(1, 2 * abs(offset)/self.animator.thresholdValue)
+            self.animator.refresh(view: self, progressDidChange: progress)
+        }
     }
     
+    open override func start() {
+        guard scrollView != nil else {
+            return
+        }
+        super.start()
+        self.animator.animationBegin(refreshView: self)
+        
+        self.refreshHandler?()
+    }
+    
+    open override func stop() {
+        guard scrollView != nil else {
+            return
+        }
+        
+        if self.noMoreData == false {
+            self.animator.refresh(view: self, stateDidChanged: .pullToRefresh)
+        }
+        super.stop()
+    }
 }
 
 
