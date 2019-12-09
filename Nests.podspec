@@ -108,6 +108,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'Network' do |network|
     network.source_files = 'Nests/Network/*'
+    network.dependency 'Nests/Foundation'
     network.dependency 'Alamofire'
     network.dependency 'SQLite.swift'
   end
