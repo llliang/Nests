@@ -18,7 +18,7 @@ public final class NNetworkMonitor {
     
     public var authorizationState = CTCellularDataRestrictedState.restrictedStateUnknown
     
-    private let reachabilityManager = NetworkReachabilityManager(host: "www.baidu.com")
+    private lazy var reachabilityManager = NetworkReachabilityManager(host: "www.baidu.com")
     private var isMonitoringReachability = false
     
     public var reachabilityStatus: NetworkReachabilityManager.NetworkReachabilityStatus {
@@ -59,6 +59,7 @@ public final class NNetworkMonitor {
 
     /// 监听当前网络模式状态
     public func reachabilityMonitoring(reachabilityStatus: @escaping (NetworkReachabilityManager.NetworkReachabilityStatus) -> Void) {
+        
         if isMonitoringReachability {
             return
         }
@@ -69,5 +70,10 @@ public final class NNetworkMonitor {
             reachabilityStatus(status)
         }
         reachabilityManager?.startListening()
+    }
+    
+    public func stopReachabilityMonitoring() {
+        reachabilityManager?.stopListening()
+        isMonitoringReachability = false
     }
 }
