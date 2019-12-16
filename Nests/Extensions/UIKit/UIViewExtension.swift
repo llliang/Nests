@@ -1,5 +1,5 @@
 //
-//  UIViewFrameExtension.swift
+//  UIViewExtension.swift
 //  Nests
 //
 //  Created by Neo on 2018/11/28.
@@ -100,6 +100,7 @@ public struct NCornerRadii {
     }
 }
 
+// MARK: - corner extension
 extension UIView {
     
     /// 在设置完frame后 给view添加圆角
@@ -138,5 +139,16 @@ extension UIView {
         let shadowLayer = CAShapeLayer()
         shadowLayer.path = path
         self.layer.mask = shadowLayer
+    }
+}
+
+// MARK: - action extension
+extension UIView {
+    
+    /// 移除所有subviews
+    public func removeAllSubviews() {
+        self.subviews.forEach { (view) in
+            view.removeFromSuperview()
+        }
     }
 }

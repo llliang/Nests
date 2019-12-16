@@ -35,7 +35,7 @@
 		DCBEBA80230D571600A119CE /* NCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA7E230D571600A119CE /* NCacheManager.swift */; };
 		DCBEBA81230D571600A119CE /* NHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA7F230D571600A119CE /* NHttpManager.swift */; };
 		DCF6D05D23602357000BE829 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF6D05C23602357000BE829 /* DictionaryExtension.swift */; };
-		EC73B54221AE714100A2F47B /* UIViewFrameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */; };
+		EC73B54221AE714100A2F47B /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC73B54121AE714100A2F47B /* UIViewExtension.swift */; };
 		EC7963B6813D7CAA8F2F0829 /* Pods_Nests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75960BB9241D99B33B2BD393 /* Pods_Nests.framework */; };
 		ECB1789421ABC45F006CBDB6 /* NNest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1789321ABC45F006CBDB6 /* NNest.swift */; };
 		ECFEE8B821953A2E00D8B346 /* Nests.h in Headers */ = {isa = PBXBuildFile; fileRef = ECFEE8B621953A2E00D8B346 /* Nests.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -89,7 +89,7 @@
 		DCBEBA7E230D571600A119CE /* NCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NCacheManager.swift; sourceTree = "<group>"; };
 		DCBEBA7F230D571600A119CE /* NHttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHttpManager.swift; sourceTree = "<group>"; };
 		DCF6D05C23602357000BE829 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
-		EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewFrameExtension.swift; sourceTree = "<group>"; };
+		EC73B54121AE714100A2F47B /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		ECB1789321ABC45F006CBDB6 /* NNest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNest.swift; sourceTree = "<group>"; };
 		ECFEE8B321953A2E00D8B346 /* Nests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECFEE8B621953A2E00D8B346 /* Nests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Nests.h; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				DCBEBA74230D56EF00A119CE /* UIScrollView+refresh */,
-				EC73B54121AE714100A2F47B /* UIViewFrameExtension.swift */,
+				EC73B54121AE714100A2F47B /* UIViewExtension.swift */,
 				DC0501FF23602B52009E0208 /* UIColorExtension.swift */,
 				B5DB524C236811C7008FB2C6 /* UIImageExtension.swift */,
 			);
@@ -486,7 +486,7 @@
 				DCBEBA80230D571600A119CE /* NCacheManager.swift in Sources */,
 				DCBEBA73230D56E100A119CE /* NEntityCodable.swift in Sources */,
 				DCBEBA79230D56EF00A119CE /* UIScorllViewExtention.swift in Sources */,
-				EC73B54221AE714100A2F47B /* UIViewFrameExtension.swift in Sources */,
+				EC73B54221AE714100A2F47B /* UIViewExtension.swift in Sources */,
 				DCF6D05D23602357000BE829 /* DictionaryExtension.swift in Sources */,
 				DCBEBA7C230D56EF00A119CE /* NRfreshViewAnimator.swift in Sources */,
 				DC8B81EE23928E5A0012177F /* NNetworkMonitor.swift in Sources */,
