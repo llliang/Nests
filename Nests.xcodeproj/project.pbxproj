@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B50A1650237CF6D7001DC908 /* NError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A164F237CF6D7001DC908 /* NError.swift */; };
 		B52F8A5A239E419000FCAE64 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52F8A59239E419000FCAE64 /* Launch Screen.storyboard */; };
+		B587CFD723A77BE20059916B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B587CFD623A77BE20059916B /* StringExtension.swift */; };
 		B5A04469237A586100649E0B /* Nests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFEE8B321953A2E00D8B346 /* Nests.framework */; };
 		B5DB524D236811C7008FB2C6 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB524C236811C7008FB2C6 /* UIImageExtension.swift */; };
 		CB1BC92FF5B5700BD29B5512 /* Pods_NestsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463C0EA89803490B0AF1DC93 /* Pods_NestsDemo.framework */; };
@@ -59,6 +60,7 @@
 		AAFC694BBFB32BF8D40F424C /* Pods-Nests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nests.release.xcconfig"; path = "Target Support Files/Pods-Nests/Pods-Nests.release.xcconfig"; sourceTree = "<group>"; };
 		B50A164F237CF6D7001DC908 /* NError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NError.swift; sourceTree = "<group>"; };
 		B52F8A59239E419000FCAE64 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Resources/Launch Screen.storyboard"; sourceTree = "<group>"; };
+		B587CFD623A77BE20059916B /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		B5DB524C236811C7008FB2C6 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		D59B95DEEE45207E9B1C04DF /* Pods-Nests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nests.debug.xcconfig"; path = "Target Support Files/Pods-Nests/Pods-Nests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC0501FF23602B52009E0208 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				DCF6D05C23602357000BE829 /* DictionaryExtension.swift */,
+				B587CFD623A77BE20059916B /* StringExtension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				DCBEBA80230D571600A119CE /* NCacheManager.swift in Sources */,
 				DCBEBA73230D56E100A119CE /* NEntityCodable.swift in Sources */,
 				DCBEBA79230D56EF00A119CE /* UIScorllViewExtention.swift in Sources */,
+				B587CFD723A77BE20059916B /* StringExtension.swift in Sources */,
 				EC73B54221AE714100A2F47B /* UIViewExtension.swift in Sources */,
 				DCF6D05D23602357000BE829 /* DictionaryExtension.swift in Sources */,
 				DCBEBA7C230D56EF00A119CE /* NRfreshViewAnimator.swift in Sources */,
@@ -517,7 +521,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 57ZK8687SF;
+				DEVELOPMENT_TEAM = 2YLCZUWBK7;
 				INFOPLIST_FILE = NestsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -526,7 +530,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taeho.app.NestsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = jiangliang_wildcard;
+				PROVISIONING_PROFILE_SPECIFIER = common_dev_profile;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -538,7 +542,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 57ZK8687SF;
+				DEVELOPMENT_TEAM = 2YLCZUWBK7;
 				INFOPLIST_FILE = NestsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -547,7 +551,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taeho.app.NestsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = jiangliang_wildcard;
+				PROVISIONING_PROFILE_SPECIFIER = common_dev_profile;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
