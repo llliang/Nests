@@ -81,7 +81,7 @@ open class NHttpManager {
             afMethod = .get
         }
         
-        return Alamofire.request(url, method: afMethod, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+        return Alamofire.request(url, method: afMethod, parameters: parameters, encoding: JSONEncoding.default, headers: httpHeaders).responseJSON { (response) in
             var responseResult = NHttpResult.success(response.result.value)
         
             if response.result.isSuccess {

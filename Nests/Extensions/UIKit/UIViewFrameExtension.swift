@@ -132,8 +132,7 @@ extension UIView {
         path.addArc(center: rightBottomCenter, radius: radii.rightBottom, startAngle: 0, endAngle: 0.5 * pi, clockwise: false)
         let leftBottomCenter = CGPoint(x: radii.leftBottom, y: self.height - radii.leftBottom)
         path.addArc(center: leftBottomCenter, radius: radii.leftBottom, startAngle: 0.5 * pi, endAngle: pi, clockwise: false)
-        
-        
+                
         path.closeSubpath()
         
         let shadowLayer = CAShapeLayer()
