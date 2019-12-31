@@ -76,4 +76,38 @@ public final class NNetworkMonitor {
         reachabilityManager?.stopListening()
         isMonitoringReachability = false
     }
+    
+    public var networkModel: String {
+        if isReachableOnEthernetOrWiFi {
+            return "WIFI"
+        } else if isReachableOnWWAN {
+            let info = CTTelephonyNetworkInfo()
+            
+            if info.currentRadioAccessTechnology == CTRadioAccessTechnologyGPRS {
+                return "2G"
+            } else if info.currentRadioAccessTechnology == CTRadioAccessTechnologyEdge {
+                return "2G"
+            } else if info.currentRadioAccessTechnology == CTRadioAccessTechnologyWCDMA {
+                return "3G"
+            } else if info.currentRadioAccessTechnology == CTRadioAccessTechnologyHSDPA {
+                return "3G"
+            } else if info.currentRadioAccessTechnology == CTRadioAccessTechnologyHSUPA {
+                return "3G"
+            } else if info.currentRadioAccessTechnology == CTRadioAccessTechnologyCDMA1x {
+                return "3G"
+            } else if info.currentRadioAccessTechnology == CTRadioAccessTechnologyCDMAEVDORev0 {
+                return "3G"
+            } else if info.currentRadioAccessTechnology == CTRadioAccessTechnologyCDMAEVDORevA {
+                return "3G"
+            } else if info.currentRadioAccessTechnology == CTRadioAccessTechnologyCDMAEVDORevB {
+                return "3G"
+            } else if info.currentRadioAccessTechnology == CTRadioAccessTechnologyeHRPD {
+                return "3G"
+            } else if info.currentRadioAccessTechnology == CTRadioAccessTechnologyLTE {
+                return "4G"
+            }
+        }
+        
+        return "unknown"
+    }
 }

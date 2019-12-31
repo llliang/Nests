@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B50A1650237CF6D7001DC908 /* NError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A164F237CF6D7001DC908 /* NError.swift */; };
 		B52F8A5A239E419000FCAE64 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52F8A59239E419000FCAE64 /* Launch Screen.storyboard */; };
+		B583A73023BB25FF00D447EC /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B583A72F23BB25FF00D447EC /* UIDeviceExtension.swift */; };
 		B587CFD723A77BE20059916B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B587CFD623A77BE20059916B /* StringExtension.swift */; };
 		B5A04469237A586100649E0B /* Nests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFEE8B321953A2E00D8B346 /* Nests.framework */; };
 		B5DB524D236811C7008FB2C6 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB524C236811C7008FB2C6 /* UIImageExtension.swift */; };
@@ -19,8 +20,6 @@
 		DCBEBA2E230D2FEC00A119CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA2D230D2FEC00A119CE /* ViewController.swift */; };
 		DCBEBA33230D2FED00A119CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCBEBA32230D2FED00A119CE /* Assets.xcassets */; };
 		DCBEBA46230D30CC00A119CE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA3B230D30CB00A119CE /* BaseViewController.swift */; };
-		DCBEBA47230D30CC00A119CE /* HttpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA3C230D30CC00A119CE /* HttpTableViewController.swift */; };
-		DCBEBA48230D30CC00A119CE /* RefreshViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBA3D230D30CC00A119CE /* RefreshViewAnimator.swift */; };
 		DCBEBA49230D30CC00A119CE /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = DCBEBA3F230D30CC00A119CE /* loading.json */; };
 		DCBEBA4A230D30CC00A119CE /* img_1.png in Resources */ = {isa = PBXBuildFile; fileRef = DCBEBA41230D30CC00A119CE /* img_1.png */; };
 		DCBEBA4B230D30CC00A119CE /* img_0.png in Resources */ = {isa = PBXBuildFile; fileRef = DCBEBA42230D30CC00A119CE /* img_0.png */; };
@@ -60,6 +59,7 @@
 		AAFC694BBFB32BF8D40F424C /* Pods-Nests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nests.release.xcconfig"; path = "Target Support Files/Pods-Nests/Pods-Nests.release.xcconfig"; sourceTree = "<group>"; };
 		B50A164F237CF6D7001DC908 /* NError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NError.swift; sourceTree = "<group>"; };
 		B52F8A59239E419000FCAE64 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Resources/Launch Screen.storyboard"; sourceTree = "<group>"; };
+		B583A72F23BB25FF00D447EC /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		B587CFD623A77BE20059916B /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		B5DB524C236811C7008FB2C6 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		D59B95DEEE45207E9B1C04DF /* Pods-Nests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nests.debug.xcconfig"; path = "Target Support Files/Pods-Nests/Pods-Nests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -71,8 +71,6 @@
 		DCBEBA32230D2FED00A119CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCBEBA37230D2FED00A119CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCBEBA3B230D30CB00A119CE /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		DCBEBA3C230D30CC00A119CE /* HttpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTableViewController.swift; sourceTree = "<group>"; };
-		DCBEBA3D230D30CC00A119CE /* RefreshViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshViewAnimator.swift; sourceTree = "<group>"; };
 		DCBEBA3F230D30CC00A119CE /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		DCBEBA41230D30CC00A119CE /* img_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_1.png; sourceTree = "<group>"; };
 		DCBEBA42230D30CC00A119CE /* img_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_0.png; sourceTree = "<group>"; };
@@ -166,6 +164,7 @@
 				EC73B54121AE714100A2F47B /* UIViewExtension.swift */,
 				DC0501FF23602B52009E0208 /* UIColorExtension.swift */,
 				B5DB524C236811C7008FB2C6 /* UIImageExtension.swift */,
+				B583A72F23BB25FF00D447EC /* UIDeviceExtension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -174,8 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				DCBEBA3B230D30CB00A119CE /* BaseViewController.swift */,
-				DCBEBA3C230D30CC00A119CE /* HttpTableViewController.swift */,
-				DCBEBA3D230D30CC00A119CE /* RefreshViewAnimator.swift */,
 				DCBEBA3E230D30CC00A119CE /* Resources */,
 				DCBEBA2B230D2FEC00A119CE /* AppDelegate.swift */,
 				DCBEBA2D230D2FEC00A119CE /* ViewController.swift */,
@@ -474,10 +471,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCBEBA2E230D2FEC00A119CE /* ViewController.swift in Sources */,
-				DCBEBA48230D30CC00A119CE /* RefreshViewAnimator.swift in Sources */,
 				DCBEBA2C230D2FEC00A119CE /* AppDelegate.swift in Sources */,
 				DCBEBA46230D30CC00A119CE /* BaseViewController.swift in Sources */,
-				DCBEBA47230D30CC00A119CE /* HttpTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +496,7 @@
 				DCBEBA72230D56E100A119CE /* NModel.swift in Sources */,
 				DC05020023602B52009E0208 /* UIColorExtension.swift in Sources */,
 				B50A1650237CF6D7001DC908 /* NError.swift in Sources */,
+				B583A73023BB25FF00D447EC /* UIDeviceExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,7 +519,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2YLCZUWBK7;
 				INFOPLIST_FILE = NestsDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -544,7 +540,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2YLCZUWBK7;
 				INFOPLIST_FILE = NestsDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
