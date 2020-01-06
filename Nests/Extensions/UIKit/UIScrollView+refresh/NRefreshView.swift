@@ -263,13 +263,13 @@ open class NRefreshFooterView: NRefreshView {
     }
     
     open override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
         DispatchQueue.main.async {
             self.scrollViewContentInsents = self.scrollView?.contentInset ?? .zero
             self.scrollView?.contentInset.bottom = self.scrollViewContentInsents.bottom + self.height
-            self.frame = CGRect(x: 0, y: self.scrollView!.contentSize.height + self.scrollViewContentInsents.bottom, width: self.width, height: self.height)
+            self.frame = CGRect(x: 0, y: (self.scrollView?.contentSize.height ?? 0) + self.scrollViewContentInsents.bottom, width: self.width, height: self.height)
         }
-        
-        super.didMoveToSuperview()
     }
     
     override open func didChangeContentSize(object: Any?, change: [NSKeyValueChangeKey : Any]?) {
