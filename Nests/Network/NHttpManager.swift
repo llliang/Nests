@@ -81,15 +81,13 @@ open class NHttpManager {
             afMethod = .get
         }
         
-        return Alamofire.request(url, method: afMethod, parameters: parameters, encoding: JSONEncoding.default, headers: httpHeaders).responseJSON { (response) in
-            var responseResult = NHttpResult.success(response.result.value)
-        
-            if response.result.isSuccess {
-                responseResult = NHttpResult.success(response.result.value)
-            } else {
-                responseResult = NHttpResult.failure(NError(reason: response.result.error?.localizedDescription))
+        return AF.request(url, method: afMethod, parameters: parameters, encoding: JSONEncoding.default, headers: HTTPHeaders(httpHeaders!)).responseJSON { (response) in
+            switch response.result {
+                case .success(let value):
+                    completion(NHttpResult.success(value))
+                case .failure(let error):
+                    completion(NHttpResult.failure(NError(reason: error.localizedDescription)))
             }
-            completion(responseResult)
         }.task
     }
     

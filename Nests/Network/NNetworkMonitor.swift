@@ -22,7 +22,7 @@ public final class NNetworkMonitor {
     private var isMonitoringReachability = false
     
     public var reachabilityStatus: NetworkReachabilityManager.NetworkReachabilityStatus {
-        if let status = reachabilityManager?.networkReachabilityStatus {
+        if let status = reachabilityManager?.status {
             return status
         }
         return .unknown
@@ -33,7 +33,7 @@ public final class NNetworkMonitor {
     }
 
     public var isReachableOnWWAN: Bool {
-        return reachabilityManager?.isReachableOnWWAN ?? false
+        return reachabilityManager?.isReachableOnCellular ?? false
     }
        
     public var isReachableOnEthernetOrWiFi: Bool {
@@ -66,10 +66,15 @@ public final class NNetworkMonitor {
         
         isMonitoringReachability = true
         
-        reachabilityManager?.listener = { status in
-            reachabilityStatus(status)
-        }
-        reachabilityManager?.startListening()
+//        reachabilityManager?.listener = { status in
+//            reachabilityStatus(status)
+//        }
+//        reachabilityManager?.startListening()
+        reachabilityManager?.startListening(onQueue: DispatchQueue.global(), onUpdatePerforming: { (status) in
+            DispatchQueue.main.async {
+                reachabilityStatus(status)
+            }
+        })
     }
     
     public func stopReachabilityMonitoring() {
