@@ -80,8 +80,8 @@ open class NHttpManager {
         case .GET:
             afMethod = .get
         }
-        
-        return AF.request(url, method: afMethod, parameters: parameters, encoding: JSONEncoding.default, headers: HTTPHeaders(httpHeaders!)).responseJSON { (response) in
+       
+        return AF.request(url, method: afMethod, parameters: parameters, encoding: JSONEncoding.default, headers: self.translate(header: httpHeaders)).responseJSON { (response) in
             switch response.result {
                 case .success(let value):
                     completion(NHttpResult.success(value))
@@ -91,4 +91,10 @@ open class NHttpManager {
         }.task
     }
     
+    class func translate(header: Dictionary<String, String>?) -> HTTPHeaders? {
+        if let h = header {
+            return HTTPHeaders(h)
+        }
+        return nil
+    }
 }
