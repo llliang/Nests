@@ -516,8 +516,8 @@
 			baseConfigurationReference = 1171CBF17794F92825DEB0AC /* Pods-NestsDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 2YLCZUWBK7;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K8HPBRQW2X;
 				INFOPLIST_FILE = NestsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -526,7 +526,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taeho.app.NestsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = common_dev_profile;
+				PROVISIONING_PROFILE_SPECIFIER = "wildcard_ development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -537,8 +537,8 @@
 			baseConfigurationReference = 7620A5803C3C54F8C239A031 /* Pods-NestsDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 2YLCZUWBK7;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K8HPBRQW2X;
 				INFOPLIST_FILE = NestsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -547,7 +547,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.taeho.app.NestsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = common_dev_profile;
+				PROVISIONING_PROFILE_SPECIFIER = "wildcard_ development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

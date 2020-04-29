@@ -97,4 +97,37 @@ open class NHttpManager {
         }
         return nil
     }
+    
+    @discardableResult open class func download(url: URLConvertible,
+    method: NHttpMethod,
+    to destination: URL,
+    progress: @escaping ((Float) -> Void),
+    completion: @escaping (_ data: NHttpResult<Any?>) -> ()) -> DownloadRequest {
+        
+        var afMethod = HTTPMethod.get;
+        switch method {
+        case .POST:
+            afMethod = .post
+        case .GET:
+            afMethod = .get
+        }
+        
+        return AF.download(url, method: .get) { (url, response) -> (destinationURL: URL, options: DownloadRequest.Options) in
+            return (destination, [.createIntermediateDirectories, .removePreviousFile])
+        }.responseData { (response) in
+            switch response.result {
+                case .success(let value):
+                    completion(NHttpResult.success(value))
+                case .failure(let error):
+                    completion(NHttpResult.failure(NError(reason: error.localizedDescription)))
+            }
+        }.downloadProgress { (p) in
+            let total = p.totalUnitCount
+            if total > 0 {
+                progress(Float(p.completedUnitCount)/Float(total))
+            } else {
+                progress(Float(0))
+            }
+        }
+    }
 }
