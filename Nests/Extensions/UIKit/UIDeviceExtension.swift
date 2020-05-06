@@ -64,6 +64,10 @@ extension UIDevice {
                     "iPhone11,4": "iPhone XS Max",
                     "iPhone11,6": "iPhone XS Max (China)",
                     "iPhone11,8": "iPhone XR",
+                    "iPhone12,1": "iPhone 11",
+                    "iPhone12,3": "iPhone 11 Pro",
+                    "iPhone12,5": "iPhone 11 Pro Max",
+                    "iPhone12,8": "iPhone SE 2",
                     
                     "iPad1,1": "iPad 1",
                     "iPad2,1": "iPad 2 (WiFi)",
