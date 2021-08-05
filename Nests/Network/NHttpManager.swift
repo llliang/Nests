@@ -112,9 +112,9 @@ open class NHttpManager {
             afMethod = .get
         }
         
-        return AF.download(url, method: .get) { (url, response) -> (destinationURL: URL, options: DownloadRequest.Options) in
+        return AF.download(url, method: afMethod, to: { (url, response) -> (destinationURL: URL, options: DownloadRequest.Options) in
             return (destination, [.createIntermediateDirectories, .removePreviousFile])
-        }.responseData { (response) in
+        }).responseData { (response) in
             switch response.result {
                 case .success(let value):
                     completion(NHttpResult.success(value))
